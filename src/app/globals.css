@@ -1,0 +1,9 @@
+/* Tailwind CSS v4 — standar Next.js */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Font kustom */
+@import "./fonts.css";
+
+/* Design tokens (CSS variables) */
+@import "./theme.css";
