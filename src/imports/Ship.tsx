@@ -3,7 +3,7 @@
 import React from "react";
 
 /* ================= ASSETS ================= */
-const imgPattern20111 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
+const imgPattern20111 = "/assets/imgPattern20111.png";
 const imgSiginjaiFinal2 = "/assets/06216d95e4d1bb8d0df55dcf3b76e16e11fe0ded.png";
 const imgXpressBahari9FFinal2 = "/assets/6d9de98984a25ddbf56d327f94beb29a28fb5d0b.png";
 const imgPelniKalimutuFinal2 = "/assets/c702909d2bf5b51b9e0818ae4188ef76f6291368.png";
@@ -38,16 +38,15 @@ const ShipCard: React.FC<ShipItem> = ({ title, image }) => {
         </p>
       </div>
 
-      {/* PATTERN BACKGROUND FULL WIDTH - Ensuring it stays visible and spans full viewport */}
-      <img 
-        src={imgPattern20111} 
-        alt="pattern" 
-        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-screen min-w-[100vw] h-52 md:h-60 pointer-events-none z-0" 
+      {/* PATTERN - Single image per card, spanning full screen */}
+      <img
+        src={imgPattern20111}
+        alt="pattern"
+        className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-screen min-w-[100vw] max-w-none h-auto pointer-events-none z-0"
       />
 
       {/* IMAGE CONTAINER */}
       <div className="relative w-full h-[240px] md:h-[440px] z-10">
-        {/* IMAGE */}
         <img
           src={image}
           alt={title}
@@ -83,7 +82,7 @@ const Ship: React.FC = () => {
 
       {/* CONTENT */}
       <main className="flex-1">
-        <div className="max-w-5xl mx-auto px-4 py-16 flex flex-col gap-20">
+        <div className="max-w-5xl mx-auto px-4 py-16 flex flex-col gap-x-20 gap-y-24">
           
           {ships.map((ship, index) => (
             <ShipCard key={index} {...ship} />
