@@ -1,4 +1,9 @@
 'use client';
+
+import React from "react";
+import { imgRectangle4237 } from "./svg-0s4k8";
+
+/* ================= ASSETS ================= */
 const imgTicket = "/assets/5aeb5814785d05b69a5b08368d9a861a3285e7a0.png";
 const imgWhatsAppImage20250103At113843Pm1 = "/assets/a0d9ef80efafab54ae8ca2e92de9704eed586c57.png";
 const img62 = "/assets/70d17b77c3bffd3d5c8435c3a4a39f421e892ecb.png";
@@ -7,198 +12,188 @@ const imgWhatsAppImage20250924At72012Am4 = "/assets/6b1e620a6cc0c621c218ef900ca1
 const imgPattern2016 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgLosalaTravelLogoOnly = "/assets/110f0e1e80716f8a995f0c7455b7174a0b709b85.png";
 const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";
-import { imgRectangle4237 } from "./svg-9ibab";
 
-function MaskGroup() {
-  return (
-    <div className="absolute contents left-[-39px] top-[704px]" data-name="Mask group">
-      <div className="absolute bg-[#d9d9d9] h-[559px] left-[-39px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[1518px_559px] top-[704px] w-[1518px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-      <div className="absolute h-[1974px] left-[-21px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-18px_833px] mask-size-[1518px_559px] top-[-129px] w-[1481px]" data-name="WhatsApp Image 2025-01-03 at 11.38.43 PM 1" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgWhatsAppImage20250103At113843Pm1} />
-      </div>
-    </div>
-  );
-}
+/* ================= TYPES ================= */
+type PackageItem = {
+  title: string;
+  image: string;
+  imageClassName?: string;
+  overlay?: boolean;
+  overlayHeight?: string;
+  titleClassName?: string;
+};
 
-function Group7() {
-  return (
-    <div className="-translate-x-1/2 absolute contents font-['Poppins:Bold',sans-serif] leading-[20px] left-[calc(54.17%-40.5px)] not-italic text-white top-[918px]">
-      <p className="absolute h-[31px] left-[calc(54.17%-414px)] text-[96px] top-[918px] w-[747px]">3 Hari 2 Malam</p>
-      <p className="absolute h-[31px] left-[calc(54.17%-249px)] text-[64px] top-[1018px] w-[418px]">Rp 1.750.000</p>
-    </div>
-  );
-}
+/* ================= DATA ================= */
+const packages: PackageItem[] = [
+  {
+    title: "Gathering package",
+    image: img62,
+    overlay: true,
+    overlayHeight: "h-[432px]",
+    imageClassName: "object-cover",
+    titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
+  },
+  {
+    title: "Private trip package",
+    image: imgWhatsAppImage20250103At113843Pm1,
+    overlay: true,
+    overlayHeight: "h-[559px]",
+    imageClassName: "object-cover",
+    titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
+  },
+  {
+    title: "Glamping Ground",
+    image: imgWhatsAppImage20250924At72012Am4,
+    overlay: true,
+    overlayHeight: "h-[535px]",
+    imageClassName: "object-cover",
+    titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
+  },
+  {
+    title: "By. Request",
+    image: imgImg202508221000261211,
+    overlay: true,
+    overlayHeight: "h-[432px]",
+    imageClassName: "object-cover",
+    titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
+  },
+];
 
-function Group1() {
+/* ================= HELPERS ================= */
+const MaskedImageSection: React.FC<{
+  title: string;
+  image: string;
+  overlay?: boolean;
+  overlayHeight?: string;
+  titleClassName?: string;
+  imageClassName?: string;
+}> = ({
+  title,
+  image,
+  overlay = true,
+  overlayHeight = "h-[559px]",
+  titleClassName = "",
+  imageClassName = "object-cover",
+}) => {
   return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[704px]">
-      <MaskGroup />
-      <div className="absolute bg-gradient-to-b from-[rgba(217,217,217,0.05)] h-[559px] left-0 to-[rgba(13,36,100,0.8)] top-[704px] w-[1440px]" />
-      <Group7 />
-    </div>
-  );
-}
+    <section className="relative w-full">
+      <div className="relative w-full overflow-hidden">
+        <div
+          className="relative w-full h-[420px] md:h-[520px] lg:h-[559px] bg-[#d9d9d9] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-center mask-size-cover"
+          style={{ maskImage: `url('${imgRectangle4237}')` }}
+        >
+          <img
+            src={image}
+            alt={title}
+            className={`absolute inset-0 w-full h-full ${imageClassName}`}
+          />
 
-function Group8() {
-  return (
-    <div className="-translate-x-1/2 absolute contents font-['Poppins:Bold',sans-serif] leading-[20px] left-[calc(50%+0.5px)] not-italic text-white top-[393px]">
-      <p className="absolute h-[31px] left-[calc(50%-354px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-405px_-248px] mask-size-[1518px_559px] text-[96px] top-[393px] w-[709px]" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        2 Hari 1 Malam
-      </p>
-      <p className="absolute h-[31px] left-[calc(50%-207px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-552px_-348px] mask-size-[1518px_559px] text-[64px] top-[493px] w-[415px]" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        Rp 1.400.000
-      </p>
-    </div>
-  );
-}
+          {overlay && (
+            <div
+              className={`absolute inset-x-0 bottom-0 ${overlayHeight} bg-gradient-to-b from-[rgba(217,217,217,0.05)] to-[rgba(13,36,100,0.8)]`}
+            />
+          )}
 
-function Group2() {
-  return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[272px]">
-      <div className="-translate-x-1/2 absolute bg-gradient-to-b from-[rgba(217,217,217,0.05)] h-[432px] left-1/2 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-39px_-127px] mask-size-[1518px_559px] to-[rgba(13,36,100,0.8)] top-[272px] w-[1440px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-      <Group8 />
-    </div>
-  );
-}
-
-function MaskGroup1() {
-  return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[145px]" data-name="Mask group">
-      <div className="absolute bg-[#d9d9d9] h-[559px] left-[-39px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[1518px_559px] top-[145px] w-[1518px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-      <div className="absolute h-[2040px] left-[-39px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_1042px] mask-size-[1518px_559px] top-[-897px] w-[1530px]" data-name="6 2" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img62} />
-      </div>
-      <Group2 />
-    </div>
-  );
-}
-
-function Group3() {
-  return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[1949px]">
-      <div className="-translate-x-1/2 absolute bg-gradient-to-b from-[rgba(217,217,217,0.05)] h-[432px] left-1/2 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-39px_-127px] mask-size-[1518px_559px] to-[rgba(13,36,100,0.8)] top-[1949px] w-[1440px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-      <p className="absolute font-['Poppins:Bold',sans-serif] h-[78px] leading-[20px] left-[calc(50%-294px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-465px_-280px] mask-size-[1518px_559px] not-italic text-[96px] text-white top-[2102px] w-[589px]" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        By. Request
-      </p>
-    </div>
-  );
-}
-
-function MaskGroup2() {
-  return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[1822px]" data-name="Mask group">
-      <div className="absolute bg-[#d9d9d9] h-[559px] left-[-39px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[1518px_559px] top-[1822px] w-[1518px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-      <div className="absolute h-[2810px] left-[-102px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[63px_1256px] mask-size-[1518px_559px] top-[566px] w-[1581px]" data-name="IMG_20250822_100026_121 1" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg202508221000261211} />
-      </div>
-      <Group3 />
-    </div>
-  );
-}
-
-function Group4() {
-  return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[1287px]">
-      <div className="-translate-x-1/2 absolute bg-gradient-to-b from-[rgba(217,217,217,0)] h-[535px] left-1/2 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-39px_-24px] mask-size-[1518px_559px] to-[rgba(13,36,100,0.8)] top-[1287px] w-[1440px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-    </div>
-  );
-}
-
-function Group9() {
-  return (
-    <div className="-translate-x-1/2 absolute contents font-['Poppins:Bold',sans-serif] leading-[20px] left-[calc(50%+0.5px)] not-italic text-white top-[1477px]">
-      <p className="absolute h-[31px] left-[calc(50%-373px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-386px_-214px] mask-size-[1518px_559px] text-[96px] top-[1477px] w-[747px]" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        4 Hari 3 Malam
-      </p>
-      <p className="absolute h-[31px] left-[calc(50%-215px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-544px_-314px] mask-size-[1518px_559px] text-[64px] top-[1577px] w-[431px]" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        Rp 2.150.000
-      </p>
-    </div>
-  );
-}
-
-function MaskGroup3() {
-  return (
-    <div className="-translate-x-1/2 absolute contents left-1/2 top-[1263px]" data-name="Mask group">
-      <div className="absolute bg-[#d9d9d9] h-[559px] left-[-39px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[1518px_559px] top-[1263px] w-[1518px]" style={{ maskImage: `url('${imgRectangle4237}')` }} />
-      <div className="absolute h-[1968px] left-[-19px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-20px_1137px] mask-size-[1518px_559px] top-[126px] w-[1477px]" data-name="WhatsApp Image 2025-09-24 at 7.20.12 AM 4" style={{ maskImage: `url('${imgRectangle4237}')` }}>
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgWhatsAppImage20250924At72012Am4} />
-      </div>
-      <Group4 />
-      <Group9 />
-    </div>
-  );
-}
-
-function Group() {
-  return (
-    <div className="absolute contents left-[78px] top-[2520.51px]">
-      <div className="absolute left-[78px] size-[127.129px] top-[2520.51px]" data-name="losala travel logo only">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgLosalaTravelLogoOnly} />
-      </div>
-      <div className="absolute left-[83.96px] size-[115.207px] top-[2607.36px]" data-name="losala travel logo typography">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgLosalaTravelLogoTypography} />
-      </div>
-    </div>
-  );
-}
-
-function Group5() {
-  return (
-    <div className="absolute contents left-[-213px] top-[2493px]">
-      <div className="absolute h-[389px] left-[-213px] top-[2493px] w-[2056px]" data-name="pattern 2-01 6">
-        <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[373.78%] left-[-0.01%] max-w-none top-[-137.02%] w-[100.02%]" src={imgPattern2016} />
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+            <h2
+              className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
+            >
+              {title}
+            </h2>
+          </div>
         </div>
       </div>
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Roboto:Regular',sans-serif] font-normal h-[100px] justify-center leading-[0] left-[calc(66.67%+226.4px)] text-[20px] text-black text-center top-[2653px] w-[370px]" style={{ fontVariationSettings: "'wdth' 100" }}>
-        <p className="leading-[28px]">© 2024 Travel Explore. All rights reserved.</p>
-      </div>
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Roboto:Regular',sans-serif] font-normal h-[100px] justify-center leading-[0] left-[calc(83.33%+109.4px)] text-[20px] text-black text-center top-[2560px] w-[124px]" style={{ fontVariationSettings: "'wdth' 100" }}>
-        <p className="leading-[28px]">Privacy Policy</p>
-      </div>
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Roboto:Regular',sans-serif] font-normal h-[100px] justify-center leading-[0] left-[calc(83.33%+96.4px)] text-[20px] text-black text-center top-[2610px] w-[150px]" style={{ fontVariationSettings: "'wdth' 100" }}>
-        <p className="leading-[28px]">Terms of Service</p>
-      </div>
-      <Group />
-    </div>
+    </section>
   );
-}
+};
 
-function Group6() {
+/* ================= HEADER ================= */
+const Header: React.FC = () => {
   return (
-    <div className="absolute contents left-[-4px] top-[34.49px]">
-      <p className="-translate-x-1/2 absolute font-['Poppins:SemiBold',sans-serif] leading-[normal] left-[calc(66.67%+88px)] not-italic text-[16px] text-black text-center top-[66px] whitespace-nowrap">Hubungi</p>
-      <p className="-translate-x-1/2 absolute font-['Poppins:SemiBold',sans-serif] leading-[normal] left-[calc(75%+93px)] not-italic text-[16px] text-black text-center top-[66px] whitespace-nowrap">Informasi</p>
-      <p className="-translate-x-1/2 absolute font-['Poppins:SemiBold',sans-serif] leading-[normal] left-[calc(83.33%+110px)] not-italic text-[16px] text-black text-center top-[66px] whitespace-nowrap">Tentang kami</p>
-      <div className="-translate-x-1/2 absolute h-[88.026px] left-[calc(12.5%-12px)] top-[34.49px] w-[183.935px]" data-name="losala travel logo typography">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[229.41%] left-[-5.66%] max-w-none top-[-64.71%] w-[110.38%]" src={imgLosalaTravelLogoTypography} />
+    <header className="border-b border-[#0D2464]">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 md:px-10 py-6">
+        <div className="relative h-[52px] w-[184px] overflow-hidden">
+          <img
+            src={imgLosalaTravelLogoTypography}
+            alt="Losala Travel"
+            className="absolute left-[-5.66%] top-[-64.71%] h-[229.41%] w-[110.38%] max-w-none object-contain"
+          />
         </div>
-      </div>
-      <div className="absolute h-0 left-[-4px] top-[145px] w-[1444px]">
-        <div className="absolute inset-[-1px_0_0_0]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1444 1">
-            <line id="Line 27" stroke="var(--stroke-0, #0D2464)" x2="1444" y1="0.5" y2="0.5" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  );
-}
 
+        <nav className="flex items-center gap-6 md:gap-10 text-[14px] md:text-[16px] font-semibold text-black">
+          <button className="hover:opacity-70">Hubungi</button>
+          <button className="hover:opacity-70">Informasi</button>
+          <button className="hover:opacity-70">Tentang kami</button>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+/* ================= FOOTER ================= */
+const Footer: React.FC = () => {
+  return (
+    <footer className="relative mt-16 overflow-hidden">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <img
+          src={imgPattern2016}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-[1440px] px-4 md:px-10 py-10 md:py-14">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="flex flex-col items-start">
+            <img
+              src={imgLosalaTravelLogoOnly}
+              alt="Losala Travel icon"
+              className="w-[90px] md:w-[127px] object-contain"
+            />
+            <img
+              src={imgLosalaTravelLogoTypography}
+              alt="Losala Travel"
+              className="w-[90px] md:w-[115px] object-contain -mt-2"
+            />
+          </div>
+
+          <div className="flex flex-col items-start md:items-end gap-3 text-[16px] md:text-[20px] text-black">
+            <button className="hover:opacity-70">Privacy Policy</button>
+            <button className="hover:opacity-70">Terms of Service</button>
+          </div>
+        </div>
+
+        <div className="mt-8 text-sm md:text-[20px] text-black text-center md:text-right leading-[28px]">
+          © 2024 Travel Explore. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+/* ================= PAGE ================= */
 export default function PrivateTrip() {
   return (
-    <div className="bg-white relative size-full" data-name="Private Trip">
-      <div className="absolute left-[calc(100%+114px)] size-[100px] top-[1454px]" data-name="Ticket">
-        <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgTicket} />
-      </div>
-      <Group1 />
-      <MaskGroup1 />
-      <MaskGroup2 />
-      <MaskGroup3 />
-      <Group5 />
-      <Group6 />
+    <div className="bg-white min-h-screen overflow-x-hidden">
+      <Header />
+
+      <main className="relative">
+        <div className="pointer-events-none absolute right-[-120px] top-[900px] hidden lg:block">
+          <img
+            src={imgTicket}
+            alt=""
+            className="w-[100px] h-[100px] object-contain"
+          />
+        </div>
+
+        <div className="mx-auto flex max-w-[1440px] flex-col  px-0 py-0">
+          {packages.map((item, index) => (
+            <MaskedImageSection key={index} {...item} />
+          ))}
+        </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }
