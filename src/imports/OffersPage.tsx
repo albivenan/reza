@@ -187,7 +187,7 @@ const HeroSection: React.FC = () => {
 
       <div className="relative mx-auto max-w-[1440px] px-5 md:px-12 pt-10 md:pt-16 pb-14 md:pb-20">
         <div className="max-w-[520px]">
-          <h1 className="font-['Poppins:Bold',sans-serif] leading-[0.95] text-[#0D2464] text-[34px] md:text-[62px]">
+          <h1 className="font-['Poppins:Bold',sans-serif] font-bold leading-[0.95] text-[#0D2464] text-[34px] md:text-[62px]">
             Penawaran Kami
             <br />
             <span className="text-[#FFC229]">di Losala Travel</span>
@@ -238,7 +238,7 @@ const OffersSection: React.FC = () => {
   return (
     <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-4 md:pt-6">
       <div className="text-center">
-        <h2 className="font-['Poppins:Bold',sans-serif] text-[#0D2464] text-[28px] md:text-[56px] leading-none">
+        <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[28px] md:text-[56px] leading-none">
           Penawaran kami
         </h2>
         <p className="mt-3 text-[#4D5D88] text-[12px] md:text-[18px] leading-tight font-semibold max-w-[720px] mx-auto">
@@ -266,7 +266,7 @@ const GallerySection: React.FC = () => {
   return (
     <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-14 md:pt-20">
       <div className="text-center">
-        <h2 className="font-['Poppins:Bold',sans-serif] text-[#0D2464] text-[28px] md:text-[52px] leading-none">
+        <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[28px] md:text-[52px] leading-none">
           Dokumentasi & Destinasi terbaik
         </h2>
         <p className="mt-3 text-[#4D5D88] text-[12px] md:text-[18px] font-semibold">
@@ -274,39 +274,41 @@ const GallerySection: React.FC = () => {
         </p>
       </div>
 
-      <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-[0.78fr_1.42fr] gap-6">
-        <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
+      <div className="mt-10 md:mt-12 grid grid-cols-3 grid-rows-3 gap-2 md:gap-6 h-[400px] md:h-[650px] w-full">
+        {/* div1 */}
+        <div className="row-span-3 overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
           <img
             src={galleries[0].image}
             alt={galleries[0].alt}
-            className="w-full h-[320px] md:h-[650px] object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[190px] md:auto-rows-[180px]">
-          <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-            <img
-              src={galleries[1].image}
-              alt={galleries[1].alt}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* div2 */}
+        <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
+          <img
+            src={galleries[1].image}
+            alt={galleries[1].alt}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-            <img
-              src={galleries[2].image}
-              alt={galleries[2].alt}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* div3 */}
+        <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
+          <img
+            src={galleries[2].image}
+            alt={galleries[2].alt}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          <div className="md:col-span-2 overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-            <img
-              src={galleries[3].image}
-              alt={galleries[3].alt}
-              className="w-full h-[220px] md:h-[280px] object-cover"
-            />
-          </div>
+        {/* div4 */}
+        <div className="col-span-2 row-span-2 col-start-2 overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
+          <img
+            src={galleries[3].image}
+            alt={galleries[3].alt}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
@@ -331,7 +333,7 @@ const InfoGlassCard: React.FC<{
         </div>
 
         <div>
-          <h3 className="text-white font-semibold text-[14px] md:text-[22px] leading-tight drop-shadow-sm">
+          <h3 className="text-white font-bold text-[14px] md:text-[22px] leading-tight drop-shadow-sm">
             {title}
           </h3>
           <p className="mt-2 text-white/95 text-[10px] md:text-[14px] leading-snug font-medium">
