@@ -13,7 +13,7 @@ export default function NavbarSection() {
           />
         </a>
         <nav className="flex items-center gap-[60px]">
-          <a href="#" className="font-['Poppins:SemiBold',sans-serif] text-[16px] text-black hover:opacity-70 transition-opacity">Hubungi</a>
+          <a href="/hubungi" className="font-['Poppins:SemiBold',sans-serif] text-[16px] text-black hover:opacity-70 transition-opacity">Hubungi</a>
           <a href="#" className="font-['Poppins:SemiBold',sans-serif] text-[16px] text-black hover:opacity-70 transition-opacity">Informasi</a>
           <a href="#" className="font-['Poppins:SemiBold',sans-serif] text-[16px] text-black hover:opacity-70 transition-opacity">Tentang kami</a>
         </nav>
