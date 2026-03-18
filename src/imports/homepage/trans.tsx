@@ -19,6 +19,7 @@ type TransportItem = {
   image: string;
   arrowPath: string;
   imageClassName?: string;
+  href?: string;
 };
 
 const transportItems: TransportItem[] = [
@@ -27,18 +28,21 @@ const transportItems: TransportItem[] = [
     image: imgPelniKalimutuFinal1,
     arrowPath: svgPaths.p2f15bd80,
     imageClassName: "scale-[1.18] object-cover object-center",
+    href: "/kelimutu",
   },
   {
     title: "KMP Siginjai",
     image: imgSiginjaiFinal1,
     arrowPath: svgPaths.p22b2d580,
     imageClassName: "scale-[1.2] object-cover object-center",
+    href: "/siginjai",
   },
   {
     title: "Express Bahari",
     image: imgXpressBahari9FFinal1,
     arrowPath: svgPaths.p22b2d580,
     imageClassName: "scale-[1.22] object-cover object-center",
+    href: "/express-bahari",
   },
 ];
 
@@ -115,9 +119,10 @@ function TransportCard({
   image,
   arrowPath,
   imageClassName = "",
+  href,
 }: TransportItem) {
-  return (
-    <div className="group relative">
+  const content = (
+    <>
       <div
         className="relative h-[597.942px] w-full overflow-hidden"
         style={{
@@ -145,6 +150,20 @@ function TransportCard({
       <div className="absolute bottom-[0px] right-[10px]">
         <TransportArrow path={arrowPath} />
       </div>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a href={href} className="group relative block cursor-pointer transition-transform hover:scale-[1.02]">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="group relative">
+      {content}
     </div>
   );
 }

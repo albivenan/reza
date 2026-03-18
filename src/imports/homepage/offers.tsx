@@ -35,9 +35,9 @@ export default function OffersSection() {
           <p className="font-['Poppins:Medium',sans-serif] text-[16px] md:text-[18px] text-black leading-[1.5] mb-8">
             Setiap paket perjalanan kami dilengkapi dengan panduan lengkap dan tips perjalanan dari para ahli.
           </p>
-          <button className="bg-[#ffc229] h-[80px] w-[350px] rounded-[40px] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center cursor-pointer hover:bg-[#ffb400] transition-all transform hover:-translate-y-1">
+          <a href="/penawaran" className="bg-[#ffc229] h-[80px] w-[350px] rounded-[40px] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center cursor-pointer hover:bg-[#ffb400] transition-all transform hover:-translate-y-1">
             <span className="font-['Poppins:Bold',sans-serif] text-[#0d2464] text-[24px]">Penawaran kami</span>
-          </button>
+          </a>
         </div>
       </div>
 

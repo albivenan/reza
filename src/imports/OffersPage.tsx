@@ -294,9 +294,9 @@ const GallerySection: React.FC = () => {
       </div>
 
       <div className="mt-8 md:mt-10 flex justify-center">
-        <button className="min-w-[86px] md:min-w-[120px] rounded-full bg-[#173A8A] px-6 md:px-8 py-2 md:py-3 text-white font-semibold text-[14px] md:text-[22px] shadow-[0_4px_8px_rgba(0,0,0,0.18)] hover:opacity-90">
+        <a href="/dokumentasi" className="min-w-[86px] md:min-w-[120px] rounded-full bg-[#173A8A] px-6 md:px-8 py-2 md:py-3 text-white font-semibold text-[14px] md:text-[22px] shadow-[0_4px_8px_rgba(0,0,0,0.18)] hover:opacity-90 flex items-center justify-center">
           More
-        </button>
+        </a>
       </div>
     </section>
   );
@@ -360,9 +360,9 @@ const CtaSection: React.FC = () => {
           Petualangan dan pengalaman indah menunggu mu di Karimunjawa.
         </p>
 
-        <button className="mt-6 md:mt-8 rounded-full bg-[#173A8A] px-8 md:px-14 py-4 md:py-5 text-white font-semibold text-[18px] md:text-[24px] shadow-[0_6px_12px_rgba(0,0,0,0.2)] hover:opacity-90">
+        <a href="/paket" className="mt-6 md:mt-8 inline-block rounded-full bg-[#173A8A] px-8 md:px-14 py-4 md:py-5 text-white font-semibold text-[18px] md:text-[24px] shadow-[0_6px_12px_rgba(0,0,0,0.2)] hover:opacity-90">
           Mulai Perjalanan anda
-        </button>
+        </a>
       </div>
     </section>
   );

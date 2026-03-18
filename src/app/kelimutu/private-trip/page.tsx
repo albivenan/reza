@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { imgRectangle4237 } from "./svg-0s4k8";
+import { imgRectangle4237 } from "../../../imports/svg-0s4k8";
 
 /* ================= ASSETS ================= */
 const imgTicket = "/assets/5aeb5814785d05b69a5b08368d9a861a3285e7a0.png";
@@ -9,13 +9,11 @@ const imgWhatsAppImage20250103At113843Pm1 = "/assets/a0d9ef80efafab54ae8ca2e92de
 const img62 = "/assets/70d17b77c3bffd3d5c8435c3a4a39f421e892ecb.png";
 const imgImg202508221000261211 = "/assets/0444c14a844ad141800bf1bd92b3610b39c6d8de.png";
 const imgWhatsAppImage20250924At72012Am4 = "/assets/6b1e620a6cc0c621c218ef900ca181ffa25816eb.png";
-const imgPattern2016 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
-const imgLosalaTravelLogoOnly = "/assets/110f0e1e80716f8a995f0c7455b7174a0b709b85.png";
-const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";
 
 /* ================= TYPES ================= */
 type PackageItem = {
   title: string;
+  price?: string;
   image: string;
   imageClassName?: string;
   overlay?: boolean;
@@ -26,8 +24,9 @@ type PackageItem = {
 /* ================= DATA ================= */
 const packages: (PackageItem & { href: string })[] = [
   {
-    title: "Gathering package",
-    href: "/siginjai/gathering-trip",
+    title: "2 Hari 1 Malam",
+    price: "Rp 1.700.000",
+    href: "/kelimutu/private-trip/2-hari-1-malam",
     image: img62,
     overlay: true,
     overlayHeight: "h-[432px]",
@@ -35,8 +34,9 @@ const packages: (PackageItem & { href: string })[] = [
     titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
   },
   {
-    title: "Private trip package",
-    href: "/siginjai/private-trip",
+    title: "3 Hari 2 Malam",
+    price: "Rp 2.050.000",
+    href: "/kelimutu/private-trip/3-hari-2-malam",
     image: imgWhatsAppImage20250103At113843Pm1,
     overlay: true,
     overlayHeight: "h-[559px]",
@@ -44,8 +44,9 @@ const packages: (PackageItem & { href: string })[] = [
     titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
   },
   {
-    title: "Glamping Ground",
-    href: "/paket/add-ons-glamping-ground",
+    title: "4 Hari 3 Malam",
+    price: "Rp 2.450.000",
+    href: "/kelimutu/private-trip/4-hari-3-malam",
     image: imgWhatsAppImage20250924At72012Am4,
     overlay: true,
     overlayHeight: "h-[535px]",
@@ -54,7 +55,7 @@ const packages: (PackageItem & { href: string })[] = [
   },
   {
     title: "By. Request",
-    href: "/siginjai/by-request-siginjai",
+    href: "/kelimutu/by-request-kelimutu",
     image: imgImg202508221000261211,
     overlay: true,
     overlayHeight: "h-[432px]",
@@ -66,6 +67,7 @@ const packages: (PackageItem & { href: string })[] = [
 /* ================= HELPERS ================= */
 const MaskedImageSection: React.FC<{
   title: string;
+  price?: string;
   href: string;
   image: string;
   overlay?: boolean;
@@ -74,6 +76,7 @@ const MaskedImageSection: React.FC<{
   imageClassName?: string;
 }> = ({
   title,
+  price,
   href,
   image,
   overlay = true,
@@ -82,7 +85,7 @@ const MaskedImageSection: React.FC<{
   imageClassName = "object-cover",
 }) => {
   return (
-    <a href={href} className="relative w-full block group overflow-hidden">
+    <a href={href} className="relative w-full block overflow-hidden group">
       <div className="relative w-full overflow-hidden">
         <div
           className="relative w-full h-[420px] md:h-[520px] lg:h-[559px] bg-[#d9d9d9] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-center mask-size-cover"
@@ -101,11 +104,18 @@ const MaskedImageSection: React.FC<{
           )}
 
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-            <h2
-              className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
-            >
-              {title}
-            </h2>
+            <div className="flex flex-col items-center">
+              <h2
+                className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
+              >
+                {title}
+              </h2>
+              {price && (
+                <p className="font-['Poppins:Bold',sans-serif] text-white font-bold text-[32px] md:text-[48px] lg:text-[64px] mt-4 opacity-90">
+                  {price}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -113,13 +123,10 @@ const MaskedImageSection: React.FC<{
   );
 };
 
-
-
 /* ================= PAGE ================= */
-export default function Package() {
+export default function PrivateTripPage() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
-
       <main className="relative">
         <div className="pointer-events-none absolute right-[-120px] top-[900px] hidden lg:block">
           <img
@@ -128,14 +135,12 @@ export default function Package() {
             className="w-[100px] h-[100px] object-contain"
           />
         </div>
-
         <div className="mx-auto flex max-w-[1440px] flex-col px-0 py-0 font-['Poppins',sans-serif]">
           {packages.map((item, index) => (
             <MaskedImageSection key={index} {...item} />
           ))}
         </div>
       </main>
-
     </div>
   );
 }

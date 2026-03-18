@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { imgRectangle4237 } from "./svg-0s4k8";
+import { imgRectangle4237 } from "../../../imports/svg-0s4k8";
 
 /* ================= ASSETS ================= */
 const imgTicket = "/assets/5aeb5814785d05b69a5b08368d9a861a3285e7a0.png";
@@ -24,10 +24,11 @@ type PackageItem = {
 };
 
 /* ================= DATA ================= */
-const packages: (PackageItem & { href: string })[] = [
+const packages: (PackageItem & { price?: string; href: string })[] = [
   {
-    title: "Gathering package",
-    href: "/siginjai/gathering-trip",
+    title: "Speed tent / 1 orang",
+    price: "Rp 175.000 / malam",
+    href: "/paket/add-ons-glamping-ground/speed-tent-1-orang",
     image: img62,
     overlay: true,
     overlayHeight: "h-[432px]",
@@ -35,20 +36,12 @@ const packages: (PackageItem & { href: string })[] = [
     titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
   },
   {
-    title: "Private trip package",
-    href: "/siginjai/private-trip",
+    title: "Altreex tent / 1 orang",
+    price: "Rp 250.000 / malam",
+    href: "/paket/add-ons-glamping-ground/altreex-tent-1-orang",
     image: imgWhatsAppImage20250103At113843Pm1,
     overlay: true,
     overlayHeight: "h-[559px]",
-    imageClassName: "object-cover",
-    titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
-  },
-  {
-    title: "Glamping Ground",
-    href: "/paket/add-ons-glamping-ground",
-    image: imgWhatsAppImage20250924At72012Am4,
-    overlay: true,
-    overlayHeight: "h-[535px]",
     imageClassName: "object-cover",
     titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
   },
@@ -66,6 +59,7 @@ const packages: (PackageItem & { href: string })[] = [
 /* ================= HELPERS ================= */
 const MaskedImageSection: React.FC<{
   title: string;
+  price?: string;
   href: string;
   image: string;
   overlay?: boolean;
@@ -74,6 +68,7 @@ const MaskedImageSection: React.FC<{
   imageClassName?: string;
 }> = ({
   title,
+  price,
   href,
   image,
   overlay = true,
@@ -82,7 +77,7 @@ const MaskedImageSection: React.FC<{
   imageClassName = "object-cover",
 }) => {
   return (
-    <a href={href} className="relative w-full block group overflow-hidden">
+    <a href={href} className="relative w-full block overflow-hidden group">
       <div className="relative w-full overflow-hidden">
         <div
           className="relative w-full h-[420px] md:h-[520px] lg:h-[559px] bg-[#d9d9d9] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-center mask-size-cover"
@@ -101,11 +96,18 @@ const MaskedImageSection: React.FC<{
           )}
 
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-            <h2
-              className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
-            >
-              {title}
-            </h2>
+            <div className="flex flex-col items-center">
+              <h2
+                className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
+              >
+                {title}
+              </h2>
+              {price && (
+                <p className="font-['Poppins:Bold',sans-serif] text-white font-bold text-[32px] md:text-[48px] lg:text-[64px] mt-4 opacity-90">
+                  {price}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -116,7 +118,7 @@ const MaskedImageSection: React.FC<{
 
 
 /* ================= PAGE ================= */
-export default function Package() {
+export default function AddOnsGlampingGround() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
 

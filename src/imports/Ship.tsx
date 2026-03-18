@@ -14,17 +14,18 @@ const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd
 type ShipItem = {
   title: string;
   image: string;
+  href: string;
 };
 
 /* ================= DATA ================= */
 const ships: ShipItem[] = [
-  { title: "Via Ferry Siginjai", image: imgSiginjaiFinal2 },
-  { title: "Via Express Bahari", image: imgXpressBahari9FFinal2 },
-  { title: "Via KM Pelni", image: imgPelniKalimutuFinal2 },
+  { title: "Via Ferry Siginjai", image: imgSiginjaiFinal2, href: "/siginjai" },
+  { title: "Via Express Bahari", image: imgXpressBahari9FFinal2, href: "/express-bahari" },
+  { title: "Via KM Pelni", image: imgPelniKalimutuFinal2, href: "/kelimutu" },
 ];
 
 /* ================= CARD ================= */
-const ShipCard: React.FC<ShipItem> = ({ title, image }) => {
+const ShipCard: React.FC<ShipItem> = ({ title, image, href }) => {
   return (
     <section className="relative z-0 flex flex-col gap-4">
 
@@ -46,13 +47,13 @@ const ShipCard: React.FC<ShipItem> = ({ title, image }) => {
       />
 
       {/* IMAGE CONTAINER */}
-      <div className="relative w-full h-[240px] md:h-[440px] z-10">
+      <a href={href} className="relative w-full h-[240px] md:h-[440px] z-10 block overflow-hidden rounded-xl shadow-md group cursor-pointer">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover rounded-xl shadow-md"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-      </div>
+      </a>
     </section>
   );
 };

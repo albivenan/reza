@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { imgRectangle4237 } from "./svg-0s4k8";
+import { imgRectangle4237 } from "../../../imports/svg-0s4k8";
 
 /* ================= ASSETS ================= */
 const imgTicket = "/assets/5aeb5814785d05b69a5b08368d9a861a3285e7a0.png";
@@ -24,10 +24,11 @@ type PackageItem = {
 };
 
 /* ================= DATA ================= */
-const packages: (PackageItem & { href: string })[] = [
+const packages: (PackageItem & { price?: string; href: string })[] = [
   {
-    title: "Gathering package",
-    href: "/siginjai/gathering-trip",
+    title: "2 Hari 1 Malam",
+    price: "Rp 900.000",
+    href: "/siginjai/gathering-trip/2-hari-1-malam",
     image: img62,
     overlay: true,
     overlayHeight: "h-[432px]",
@@ -35,8 +36,9 @@ const packages: (PackageItem & { href: string })[] = [
     titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
   },
   {
-    title: "Private trip package",
-    href: "/siginjai/private-trip",
+    title: "3 Hari 2 Malam",
+    price: "Rp 1.400.000",
+    href: "/siginjai/gathering-trip/3-hari-2-malam",
     image: imgWhatsAppImage20250103At113843Pm1,
     overlay: true,
     overlayHeight: "h-[559px]",
@@ -44,8 +46,9 @@ const packages: (PackageItem & { href: string })[] = [
     titleClassName: "text-[40px] md:text-[64px] lg:text-[96px]",
   },
   {
-    title: "Glamping Ground",
-    href: "/paket/add-ons-glamping-ground",
+    title: "4 Hari 3 Malam",
+    price: "Rp 1.850.000",
+    href: "/siginjai/gathering-trip/4-hari-3-malam",
     image: imgWhatsAppImage20250924At72012Am4,
     overlay: true,
     overlayHeight: "h-[535px]",
@@ -66,6 +69,7 @@ const packages: (PackageItem & { href: string })[] = [
 /* ================= HELPERS ================= */
 const MaskedImageSection: React.FC<{
   title: string;
+  price?: string;
   href: string;
   image: string;
   overlay?: boolean;
@@ -74,6 +78,7 @@ const MaskedImageSection: React.FC<{
   imageClassName?: string;
 }> = ({
   title,
+  price,
   href,
   image,
   overlay = true,
@@ -82,7 +87,7 @@ const MaskedImageSection: React.FC<{
   imageClassName = "object-cover",
 }) => {
   return (
-    <a href={href} className="relative w-full block group overflow-hidden">
+    <a href={href} className="relative w-full block overflow-hidden group">
       <div className="relative w-full overflow-hidden">
         <div
           className="relative w-full h-[420px] md:h-[520px] lg:h-[559px] bg-[#d9d9d9] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-center mask-size-cover"
@@ -101,11 +106,18 @@ const MaskedImageSection: React.FC<{
           )}
 
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-            <h2
-              className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
-            >
-              {title}
-            </h2>
+            <div className="flex flex-col items-center">
+              <h2
+                className={`font-['Poppins:Bold',sans-serif] not-italic leading-none text-white font-bold ${titleClassName}`}
+              >
+                {title}
+              </h2>
+              {price && (
+                <p className="font-['Poppins:Bold',sans-serif] text-white font-bold text-[32px] md:text-[48px] lg:text-[64px] mt-4 opacity-90">
+                  {price}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -116,7 +128,7 @@ const MaskedImageSection: React.FC<{
 
 
 /* ================= PAGE ================= */
-export default function Package() {
+export default function GatheringTripPage() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
 
@@ -129,7 +141,7 @@ export default function Package() {
           />
         </div>
 
-        <div className="mx-auto flex max-w-[1440px] flex-col px-0 py-0 font-['Poppins',sans-serif]">
+        <div className="mx-auto flex max-w-[1440px] flex-col  px-0 py-0">
           {packages.map((item, index) => (
             <MaskedImageSection key={index} {...item} />
           ))}
