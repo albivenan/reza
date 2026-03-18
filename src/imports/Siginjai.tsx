@@ -8,6 +8,7 @@ const imgAddOn = "/assets/6b1e620a6cc0c621c218ef900ca181ffa25816eb.png";
 const imgKapal = "/assets/1077e042cf49cdffe1baf8b56d95994dc5289404.png";
 const imgKapal2 = "/assets/136cb924df72a038d4296a6f9252f5d153a217cb.png";
 const kapal = "/assets/kapal.png"
+
 export default function Siginjai() {
   return (
     <div className="relative bg-white w-full min-h-screen">

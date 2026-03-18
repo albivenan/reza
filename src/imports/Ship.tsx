@@ -60,29 +60,11 @@ const ShipCard: React.FC<ShipItem> = ({ title, image }) => {
 /* ================= PAGE ================= */
 const Ship: React.FC = () => {
   return (
-    <div className="bg-white min-h-screen flex flex-col overflow-x-hidden">
-
-      {/* HEADER */}
-      <header className="border-b border-[#0D2464]">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-          
-          <img
-            src={imgLosalaTravelLogoTypography}
-            alt="Losala Travel"
-            className="h-10 md:h-12"
-          />
-
-          <nav className="flex gap-6 md:gap-10 text-sm font-medium text-[#0D2464]">
-            <button className="hover:opacity-70">Hubungi</button>
-            <button className="hover:opacity-70">Informasi</button>
-            <button className="hover:opacity-70">Tentang kami</button>
-          </nav>
-        </div>
-      </header>
+    <div className="bg-white min-h-screen flex flex-col">
 
       {/* CONTENT */}
       <main className="flex-1">
-        <div className="max-w-5xl mx-auto px-4 py-16 flex flex-col gap-x-20 gap-y-24">
+        <div className="container mx-auto px-4 py-16 flex flex-col gap-y-24">
           
           {ships.map((ship, index) => (
             <ShipCard key={index} {...ship} />
@@ -90,38 +72,6 @@ const Ship: React.FC = () => {
 
         </div>
       </main>
-
-      {/* FOOTER */}
-      <footer className="border-t mt-16">
-        <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <img
-              src={imgLosalaTravelLogoOnly}
-              alt="logo icon"
-              className="h-12"
-            />
-            <img
-              src={imgLosalaTravelLogoTypography}
-              alt="logo text"
-              className="h-8"
-            />
-          </div>
-
-          {/* Links */}
-          <div className="flex gap-6 text-sm text-gray-600">
-            <button className="hover:text-black">Privacy Policy</button>
-            <button className="hover:text-black">Terms of Service</button>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-sm text-gray-500 text-center md:text-right">
-            © 2024 Travel Explore. All rights reserved.
-          </div>
-
-        </div>
-      </footer>
 
     </div>
   );

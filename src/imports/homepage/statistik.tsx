@@ -18,7 +18,7 @@ export default function StatistikSection() {
       <div className="relative z-10 mx-auto max-w-[1440px] px-[60px]">
         <div className="flex w-full divide-x divide-[#0d2464] border-y border-[#0d2464]">
           {stats.map((s, i) => (
-            <div key={i} className="flex-1 px-8 py-4 flex flex-col justify-center">
+            <div key={i} className="flex-1 px-8 py-4 flex flex-col justify-center font-bold">
               <span className="font-['Poppins:SemiBold',sans-serif] text-[20px] text-black">{s.label}</span>
               <span className="font-['Poppins:ExtraBold',sans-serif] text-[140px] md:text-[180px] text-black leading-none my-[-10px]">{s.value}</span>
               <span className="font-['Poppins:Regular',sans-serif] text-[16px] text-black">{s.sub}</span>

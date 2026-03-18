@@ -22,8 +22,8 @@ export default function OffersSection() {
       {/* Title */}
       {/* Header section as per attachment */}
       <div className="mx-auto max-w-[1440px] px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-10">
-        <div className="flex-1">
-          <h2 className="font-['Poppins:Bold',sans-serif] text-[48px] md:text-[64px] leading-[1.1] text-[#0d2464]">
+        <div className="flex-1 font-bold">
+          <h2 className="font-bold font-['Poppins:Bold',sans-serif] text-[48px] md:text-[64px] leading-[1.1] text-[#0d2464]">
             Impianmu dimulai
           </h2>
           <p className="font-['Poppins:Bold',sans-serif] text-[48px] md:text-[64px] leading-[1.1]">

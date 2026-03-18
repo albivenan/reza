@@ -1,5 +1,4 @@
 'use client';
-import NavbarSection from "./homepage/navbar";
 import HeroSection from "./homepage/hero";
 import OffersSection from "./homepage/offers";
 import StatistikSection from "./homepage/statistik";
@@ -8,12 +7,10 @@ import TransportSection from "./homepage/trans";
 import PulauKarimunjawa from "./homepage/karimun";
 import AboutSection from "./homepage/about";
 import ReviewsSection from "./homepage/reviews";
-import FooterSection from "./homepage/footer";
 
 export default function LosalaTravelWebsite() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden text-black" data-name="Losala Travel Website">
-      <NavbarSection />
 
       <main>
         <HeroSection />
@@ -26,7 +23,6 @@ export default function LosalaTravelWebsite() {
         <ReviewsSection />
       </main>
 
-      <FooterSection />
     </div>
   );
 }

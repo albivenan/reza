@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GlobalHeader from "../imports/GlobalHeader";
+import GlobalFooter from "../imports/GlobalFooter";
 
 export const metadata: Metadata = {
   title: "Losala Travel",
@@ -13,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body>{children}</body>
+      <body>
+        <GlobalHeader />
+        {children}
+        <GlobalFooter />
+      </body>
     </html>
   );
 }

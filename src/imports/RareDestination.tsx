@@ -148,28 +148,6 @@ const RatingBadge: React.FC<RatingBadgeProps> = ({
 };
 
 /* ================= SECTIONS ================= */
-const Header: React.FC = () => {
-  return (
-    <header className="border-b border-[#0D2464] bg-white relative z-10">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 md:px-10 py-4 md:py-5">
-        <img
-          src={imgLosalaTravelLogoTypography}
-          alt="Losala Travel"
-          className="h-10 md:h-12 object-contain"
-        />
-
-        <nav className="flex items-center gap-5 md:gap-10 text-[11px] md:text-[14px] font-semibold text-black">
-          {navLinks.map((item, index) => (
-            <button key={index} className="hover:opacity-70">
-              {item.label}
-            </button>
-          ))}
-        </nav>
-      </div>
-    </header>
-  );
-};
-
 const HeroSection: React.FC = () => {
   return (
     <section className="relative bg-white z-0">
@@ -350,43 +328,11 @@ const DestinationSection: React.FC<{ item: DestinationItem }> = ({ item }) => {
   );
 };
 
-const Footer: React.FC = () => {
-  return (
-    <footer className="relative bg-white pt-10 md:pt-12 pb-8 md:pb-10 z-0">
-      <div className="relative mx-auto max-w-[1440px] px-5 md:px-10">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          <div className="flex flex-col items-start">
-            <img
-              src={imgLosalaTravelLogoOnly}
-              alt="Losala Travel icon"
-              className="w-[76px] md:w-[92px] object-contain"
-            />
-            <img
-              src={imgLosalaTravelLogoTypography}
-              alt="Losala Travel"
-              className="w-[78px] md:w-[96px] object-contain -mt-2"
-            />
-          </div>
-
-          <div className="flex flex-col items-start md:items-end gap-2 text-[12px] md:text-[16px] text-black">
-            <button className="hover:opacity-70">Privacy Policy</button>
-            <button className="hover:opacity-70">Terms of Service</button>
-          </div>
-        </div>
-
-        <div className="mt-4 text-center md:text-right text-[11px] md:text-[14px] text-black">
-          © 2024 Travel Explore. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 /* ================= PAGE ================= */
 export default function RareDestination() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white" data-name="RareDestination">
-      <Header />
       
       <main>
         <HeroSection />
@@ -396,7 +342,6 @@ export default function RareDestination() {
         ))}
       </main>
 
-      <Footer />
     </div>
   );
 }

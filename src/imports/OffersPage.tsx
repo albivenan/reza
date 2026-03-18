@@ -160,25 +160,6 @@ const SectionPattern: React.FC<{ className?: string }> = ({ className = "" }) =>
   </div>
 );
 
-const Header: React.FC = () => {
-  return (
-    <header className="border-b border-[#0D2464]">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 md:px-10 py-4 md:py-5">
-        <img
-          src={imgLosalaTravelLogoTypography}
-          alt="Losala Travel"
-          className="h-10 md:h-12 object-contain"
-        />
-
-        <nav className="flex items-center gap-5 md:gap-10 text-[11px] md:text-[14px] font-semibold text-[#1F1F1F]">
-          <button className="hover:opacity-70">Hubungi</button>
-          <button className="hover:opacity-70">Informasi</button>
-          <button className="hover:opacity-70">Tentang kami</button>
-        </nav>
-      </div>
-    </header>
-  );
-};
 
 const HeroSection: React.FC = () => {
   return (
@@ -387,58 +368,16 @@ const CtaSection: React.FC = () => {
   );
 };
 
-const Footer: React.FC = () => {
-  return (
-    <footer className="relative overflow-hidden border-t border-transparent">
-      <div className="absolute inset-0 pointer-events-none">
-        <img
-          src={imgPattern2016}
-          alt=""
-          className="w-full h-full object-cover opacity-20"
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-[1440px] px-5 md:px-10 py-8 md:py-10">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-          <div className="flex flex-col items-start">
-            <img
-              src={imgLosalaTravelLogoOnly}
-              alt="Losala Travel icon"
-              className="w-[70px] md:w-[92px] object-contain"
-            />
-            <img
-              src={imgLosalaTravelLogoTypography}
-              alt="Losala Travel"
-              className="w-[76px] md:w-[95px] object-contain -mt-2"
-            />
-          </div>
-
-          <div className="ml-auto flex flex-col items-end gap-2 text-[12px] md:text-[18px] text-[#3B3B3B]">
-            <button className="hover:opacity-70">Privacy Policy</button>
-            <button className="hover:opacity-70">Terms of Service</button>
-          </div>
-        </div>
-
-        <div className="mt-4 text-center md:text-right text-[11px] md:text-[16px] text-[#222]">
-          © 2024 Travel Explore. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  );
-};
-
 /* ================= PAGE ================= */
 export default function OffersPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#F4F4F4]">
-      <Header />
       <main>
         <HeroSection />
         <OffersSection />
         <GallerySection />
         <CtaSection />
       </main>
-      <Footer />
     </div>
   );
 }

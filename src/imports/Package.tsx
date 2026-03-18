@@ -107,75 +107,12 @@ const MaskedImageSection: React.FC<{
   );
 };
 
-/* ================= HEADER ================= */
-const Header: React.FC = () => {
-  return (
-    <header className="border-b border-[#0D2464]">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 md:px-10 py-6">
-        <div className="relative h-[52px] w-[184px] overflow-hidden">
-          <img
-            src={imgLosalaTravelLogoTypography}
-            alt="Losala Travel"
-            className="absolute left-[-5.66%] top-[-64.71%] h-[229.41%] w-[110.38%] max-w-none object-contain"
-          />
-        </div>
 
-        <nav className="flex items-center gap-6 md:gap-10 text-[14px] md:text-[16px] font-semibold text-black">
-          <button className="hover:opacity-70">Hubungi</button>
-          <button className="hover:opacity-70">Informasi</button>
-          <button className="hover:opacity-70">Tentang kami</button>
-        </nav>
-      </div>
-    </header>
-  );
-};
-
-/* ================= FOOTER ================= */
-const Footer: React.FC = () => {
-  return (
-    <footer className="relative mt-16 overflow-hidden">
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <img
-          src={imgPattern2016}
-          alt=""
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-[1440px] px-4 md:px-10 py-10 md:py-14">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          <div className="flex flex-col items-start">
-            <img
-              src={imgLosalaTravelLogoOnly}
-              alt="Losala Travel icon"
-              className="w-[90px] md:w-[127px] object-contain"
-            />
-            <img
-              src={imgLosalaTravelLogoTypography}
-              alt="Losala Travel"
-              className="w-[90px] md:w-[115px] object-contain -mt-2"
-            />
-          </div>
-
-          <div className="flex flex-col items-start md:items-end gap-3 text-[16px] md:text-[20px] text-black">
-            <button className="hover:opacity-70">Privacy Policy</button>
-            <button className="hover:opacity-70">Terms of Service</button>
-          </div>
-        </div>
-
-        <div className="mt-8 text-sm md:text-[20px] text-black text-center md:text-right leading-[28px]">
-          © 2024 Travel Explore. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 /* ================= PAGE ================= */
 export default function Package() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
-      <Header />
 
       <main className="relative">
         <div className="pointer-events-none absolute right-[-120px] top-[900px] hidden lg:block">
@@ -193,7 +130,6 @@ export default function Package() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }
