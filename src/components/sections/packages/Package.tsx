@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { imgRectangle4237 } from "./svg-0s4k8";
+import { imgRectangle4237 } from "@/components/icons/svg-0s4k8";
 
 /* ================= ASSETS ================= */
 const imgTicket = "/assets/5aeb5814785d05b69a5b08368d9a861a3285e7a0.png";
@@ -24,9 +24,10 @@ type PackageItem = {
 };
 
 /* ================= DATA ================= */
-const packages: PackageItem[] = [
+const packages: (PackageItem & { href: string })[] = [
   {
     title: "Gathering package",
+    href: "/siginjai/gathering-trip",
     image: img62,
     overlay: true,
     overlayHeight: "h-[432px]",
@@ -35,6 +36,7 @@ const packages: PackageItem[] = [
   },
   {
     title: "Private trip package",
+    href: "/siginjai/private-trip",
     image: imgWhatsAppImage20250103At113843Pm1,
     overlay: true,
     overlayHeight: "h-[559px]",
@@ -43,6 +45,7 @@ const packages: PackageItem[] = [
   },
   {
     title: "Glamping Ground",
+    href: "/paket/add-ons-glamping-ground",
     image: imgWhatsAppImage20250924At72012Am4,
     overlay: true,
     overlayHeight: "h-[535px]",
@@ -51,6 +54,7 @@ const packages: PackageItem[] = [
   },
   {
     title: "By. Request",
+    href: "/siginjai/by-request-siginjai",
     image: imgImg202508221000261211,
     overlay: true,
     overlayHeight: "h-[432px]",
@@ -62,6 +66,7 @@ const packages: PackageItem[] = [
 /* ================= HELPERS ================= */
 const MaskedImageSection: React.FC<{
   title: string;
+  href: string;
   image: string;
   overlay?: boolean;
   overlayHeight?: string;
@@ -69,6 +74,7 @@ const MaskedImageSection: React.FC<{
   imageClassName?: string;
 }> = ({
   title,
+  href,
   image,
   overlay = true,
   overlayHeight = "h-[559px]",
@@ -76,7 +82,7 @@ const MaskedImageSection: React.FC<{
   imageClassName = "object-cover",
 }) => {
   return (
-    <section className="relative w-full">
+    <a href={href} className="relative w-full block group overflow-hidden">
       <div className="relative w-full overflow-hidden">
         <div
           className="relative w-full h-[420px] md:h-[520px] lg:h-[559px] bg-[#d9d9d9] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-center mask-size-cover"
@@ -85,7 +91,7 @@ const MaskedImageSection: React.FC<{
           <img
             src={image}
             alt={title}
-            className={`absolute inset-0 w-full h-full ${imageClassName}`}
+            className={`absolute inset-0 w-full h-full ${imageClassName} transition-transform duration-700 group-hover:scale-110`}
           />
 
           {overlay && (
@@ -103,79 +109,16 @@ const MaskedImageSection: React.FC<{
           </div>
         </div>
       </div>
-    </section>
+    </a>
   );
 };
 
-/* ================= HEADER ================= */
-const Header: React.FC = () => {
-  return (
-    <header className="border-b border-[#0D2464]">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 md:px-10 py-6">
-        <div className="relative h-[52px] w-[184px] overflow-hidden">
-          <img
-            src={imgLosalaTravelLogoTypography}
-            alt="Losala Travel"
-            className="absolute left-[-5.66%] top-[-64.71%] h-[229.41%] w-[110.38%] max-w-none object-contain"
-          />
-        </div>
 
-        <nav className="flex items-center gap-6 md:gap-10 text-[14px] md:text-[16px] font-semibold text-black">
-          <button className="hover:opacity-70">Hubungi</button>
-          <button className="hover:opacity-70">Informasi</button>
-          <button className="hover:opacity-70">Tentang kami</button>
-        </nav>
-      </div>
-    </header>
-  );
-};
-
-/* ================= FOOTER ================= */
-const Footer: React.FC = () => {
-  return (
-    <footer className="relative mt-16 overflow-hidden">
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <img
-          src={imgPattern2016}
-          alt=""
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-[1440px] px-4 md:px-10 py-10 md:py-14">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          <div className="flex flex-col items-start">
-            <img
-              src={imgLosalaTravelLogoOnly}
-              alt="Losala Travel icon"
-              className="w-[90px] md:w-[127px] object-contain"
-            />
-            <img
-              src={imgLosalaTravelLogoTypography}
-              alt="Losala Travel"
-              className="w-[90px] md:w-[115px] object-contain -mt-2"
-            />
-          </div>
-
-          <div className="flex flex-col items-start md:items-end gap-3 text-[16px] md:text-[20px] text-black">
-            <button className="hover:opacity-70">Privacy Policy</button>
-            <button className="hover:opacity-70">Terms of Service</button>
-          </div>
-        </div>
-
-        <div className="mt-8 text-sm md:text-[20px] text-black text-center md:text-right leading-[28px]">
-          © 2024 Travel Explore. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 /* ================= PAGE ================= */
-export default function PrivateTrip() {
+export default function Package() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
-      <Header />
 
       <main className="relative">
         <div className="pointer-events-none absolute right-[-120px] top-[900px] hidden lg:block">
@@ -186,14 +129,13 @@ export default function PrivateTrip() {
           />
         </div>
 
-        <div className="mx-auto flex max-w-[1440px] flex-col  px-0 py-0">
+        <div className="mx-auto flex max-w-[1440px] flex-col px-0 py-0 font-['Poppins',sans-serif]">
           {packages.map((item, index) => (
             <MaskedImageSection key={index} {...item} />
           ))}
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

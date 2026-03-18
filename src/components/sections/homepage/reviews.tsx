@@ -1,8 +1,8 @@
 'use client';
-import svgPaths from "../svg-9rp6dcu08w";
+import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgDsc023411 = "/assets/4cc3f0a4e20a0fb3df5054f9e4f9cdbe92f41c87.png";
-import { imgRectangle4222, imgEllipse18 } from "../svg-mhjo3";
+import { imgRectangle4222, imgEllipse18 } from "@/components/icons/svg-mhjo3";
 
 const reviews = [
   { name: "Sarah W.", text: "Absolutely breathtaking views and impeccable service" },

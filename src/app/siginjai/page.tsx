@@ -1,4 +1,4 @@
-import Siginjai from "@/imports/Siginjai";
+import Siginjai from "@/components/sections/transport/Siginjai";
 
 export default function Page() {
   return <Siginjai />;

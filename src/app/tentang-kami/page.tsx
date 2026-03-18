@@ -1,7 +1,7 @@
 'use client';
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgWhatsAppImage20250103At114010Pm1 = "/assets/c5e084751f71738ed60afee0155fdf0a6525d2db.png";
-import { imgRectangle4221, imgRectangle4202 } from "../../imports/svg-mhjo3";
+import { imgRectangle4221, imgRectangle4202 } from "@/components/icons/svg-mhjo3";
 
 export default function TentangKamiPage() {
   return (

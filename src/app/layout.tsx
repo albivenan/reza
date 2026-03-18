@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import GlobalHeader from "../imports/GlobalHeader";
-import GlobalFooter from "../imports/GlobalFooter";
+import GlobalHeader from "@/components/layout/GlobalHeader";
+import GlobalFooter from "@/components/layout/GlobalFooter";
 
 export const metadata: Metadata = {
   title: "Losala Travel",

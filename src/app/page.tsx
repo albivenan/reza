@@ -1,4 +1,4 @@
-import LosalaTravelWebsite from "@/imports/LosalaTravelWebsite";
+import LosalaTravelWebsite from "@/components/sections/homepage/LosalaTravelWebsite";
 
 export default function Page() {
   return <LosalaTravelWebsite />;

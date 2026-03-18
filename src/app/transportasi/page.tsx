@@ -1,4 +1,4 @@
-import Ship from "@/imports/Ship";
+import Ship from "@/components/sections/transport/Ship";
 
 export default function Page() {
   return <Ship />;

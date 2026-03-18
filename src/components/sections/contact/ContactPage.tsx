@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import svgPaths from './svg-9rp6dcu08w';
+import svgPaths from '@/components/icons/svg-9rp6dcu08w';
 
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgSnorkelingHero = "/assets/a0d9ef80efafab54ae8ca2e92de9704eed586c57.png"; // Snorkeling photo

@@ -1,0 +1,140 @@
+=== FILES INSIDE src/imports AND THEIR INTERNAL IMPORTS ===
+
+[imports/ContactPage.tsx]
+  relative: ./svg-9rp6dcu08w
+
+[imports/GatheringTrip.tsx]
+  relative: ./svg-itpwb
+
+[imports/GlampingGround.tsx]
+  relative: ./svg-y8ymd
+
+[imports/homepage/about.tsx]
+  relative: ../svg-mhjo3
+
+[imports/homepage/hero.tsx]
+  relative: ../svg-9rp6dcu08w
+  relative: ../svg-mhjo3
+
+[imports/homepage/offers.tsx]
+  relative: ../svg-9rp6dcu08w
+  relative: ../svg-mhjo3
+
+[imports/homepage/paket.tsx]
+  relative: ../svg-9rp6dcu08w
+  relative: ../svg-mhjo3
+
+[imports/homepage/reviews.tsx]
+  relative: ../svg-9rp6dcu08w
+  relative: ../svg-mhjo3
+
+[imports/homepage/trans.tsx]
+  relative: ../svg-9rp6dcu08w
+  relative: ../svg-mhjo3
+
+[imports/HomepageSection1.tsx]
+  relative: ./svg-9rp6dcu08w
+  relative: ./svg-mhjo3
+
+[imports/HomepageSection2.tsx]
+  relative: ./svg-9rp6dcu08w
+  relative: ./homepage/trans
+  relative: ./svg-mhjo3
+  relative: ./homepage/paket
+  relative: ./homepage/karimun
+
+[imports/HomepageSection3.tsx]
+  relative: ./svg-9rp6dcu08w
+  relative: ./svg-mhjo3
+
+[imports/LosalaTravelWebsite.tsx]
+  relative: ./homepage/hero
+  relative: ./homepage/offers
+  relative: ./homepage/statistik
+  relative: ./homepage/paket
+  relative: ./homepage/trans
+  relative: ./homepage/karimun
+  relative: ./homepage/about
+  relative: ./homepage/reviews
+
+[imports/OffersPage.tsx]
+  relative: ./svg-xw860op9ef
+
+[imports/Package.tsx]
+  relative: ./svg-0s4k8
+
+[imports/PrivateTrip.tsx]
+  relative: ./svg-0s4k8
+
+[imports/RareDestination.tsx]
+  relative: ../app/components/figma/ImageWithFallback
+
+
+=== PAGE FILES IN src/app AND WHAT THEY IMPORT FROM src/imports ===
+
+[app/dokumentasi/page.tsx]
+  @/imports/RareDestination
+
+[app/express-bahari/gathering-trip/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/express-bahari/page.tsx]
+  @/imports/ExpressBahari
+
+[app/express-bahari/private-trip/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/gathering-trip/page.tsx]
+  @/imports/GatheringTrip
+
+[app/gathering-trip-2d1n/page.tsx]
+  @/imports/2Hari1MalamGatheringTrip
+
+[app/glamping-ground/page.tsx]
+  @/imports/GlampingGround
+
+[app/hubungi/page.tsx]
+  @/imports/ContactPage
+
+[app/kelimutu/gathering-trip/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/kelimutu/page.tsx]
+  @/imports/Kelimutu
+
+[app/kelimutu/private-trip/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/layout.tsx]
+  ../imports/GlobalHeader
+  ../imports/GlobalFooter
+
+[app/page.tsx]
+  @/imports/LosalaTravelWebsite
+
+[app/paket/add-ons-glamping-ground/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/paket/page.tsx]
+  @/imports/Package
+
+[app/penawaran/page.tsx]
+  @/imports/OffersPage
+
+[app/private-trip/page.tsx]
+  @/imports/PrivateTrip
+
+[app/siginjai/gathering-trip/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/siginjai/page.tsx]
+  @/imports/Siginjai
+
+[app/siginjai/private-trip/page.tsx]
+  ../../../imports/svg-0s4k8
+
+[app/tentang-kami/page.tsx]
+  ../../imports/svg-mhjo3
+
+[app/transportasi/page.tsx]
+  @/imports/Ship

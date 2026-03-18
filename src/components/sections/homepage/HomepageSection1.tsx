@@ -1,5 +1,5 @@
 'use client';
-import svgPaths from "./svg-9rp6dcu08w";
+import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgDji07731 = "/assets/7f2ad25c18286501d1c570f7f827f096064429f8.png";
 const img71 = "/assets/c40f72f4f939825cb0b221f2b26e1b1922aa57d0.png";
@@ -9,7 +9,7 @@ const imgWhatsAppImage20250104At114657Am1 = "/assets/ec3a2f5cf6f3e6318410344b302
 const imgWhatsAppImage20250104At114622Am1 = "/assets/e1c2ac1049b0ae1686c4b8446ef299b778439d6d.png";
 const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";
 const imgUnsplashXsTqMVvStMa1 = "/assets/f083bd1931b07dc8db4f16b67b65dc73e3669262.png";
-import { imgRectangle4190, imgRectangle4191, imgRectangle4192, imgRectangle4193, imgRectangle4194, imgRectangle4220, imgRectangle4311, imgUnsplashXsTqMVvStMa } from "./svg-mhjo3";
+import { imgRectangle4190, imgRectangle4191, imgRectangle4192, imgRectangle4193, imgRectangle4194, imgRectangle4220, imgRectangle4311, imgUnsplashXsTqMVvStMa } from "@/components/icons/svg-mhjo3";
 
 function NavbarSection() {
   return (

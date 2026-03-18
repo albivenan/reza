@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { ImageWithFallback } from "../app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
 /* ================= ASSETS ================= */
 const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";

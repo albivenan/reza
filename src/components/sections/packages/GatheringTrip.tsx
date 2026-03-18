@@ -7,7 +7,7 @@ const imgWhatsAppImage20250924At72012Am4 = "/assets/6b1e620a6cc0c621c218ef900ca1
 const imgPattern2016 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgLosalaTravelLogoOnly = "/assets/110f0e1e80716f8a995f0c7455b7174a0b709b85.png";
 const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";
-import { imgRectangle4237 } from "./svg-itpwb";
+import { imgRectangle4237 } from "@/components/icons/svg-itpwb";
 
 function MaskGroup() {
   return (

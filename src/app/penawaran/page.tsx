@@ -1,4 +1,4 @@
-import OffersPage from "@/imports/OffersPage";
+import OffersPage from "@/components/sections/packages/OffersPage";
 
 export default function Page() {
   return <OffersPage />;

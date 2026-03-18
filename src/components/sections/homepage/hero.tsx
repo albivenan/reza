@@ -1,8 +1,8 @@
 'use client';
-import svgPaths from "../svg-9rp6dcu08w";
+import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgUnsplashXsTqMVvStMa1 = "/assets/f083bd1931b07dc8db4f16b67b65dc73e3669262.png";
 const imgWhatsAppImage20250104At114622Am1 = "/assets/e1c2ac1049b0ae1686c4b8446ef299b778439d6d.png";
-import { imgUnsplashXsTqMVvStMa, imgRectangle4311 } from "../svg-mhjo3";
+import { imgUnsplashXsTqMVvStMa, imgRectangle4311 } from "@/components/icons/svg-mhjo3";
 
 export default function HeroSection() {
   return (

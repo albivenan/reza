@@ -1,5 +1,5 @@
 'use client';
-import svgPaths from "../svg-9rp6dcu08w";
+import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgKarimunjawaMap011 = "/assets/093c4d21393f0f2504052e344e7206d936c220d7.png";
@@ -12,7 +12,7 @@ const imgPelniKalimutuFinal1 = "/assets/c702909d2bf5b51b9e0818ae4188ef76f6291368
 const imgSiginjaiFinal1 = "/assets/06216d95e4d1bb8d0df55dcf3b76e11fe0ded.png";
 const imgXpressBahari9FFinal1 = "/assets/6d9de98984a25ddbf56d327f94beb29a28fb5d0b.png";
 import React from "react";
-import { imgRectangle4154, imgRectangle4155, imgRectangle4156 } from "../svg-mhjo3";
+import { imgRectangle4154, imgRectangle4155, imgRectangle4156 } from "@/components/icons/svg-mhjo3";
 
 type PackageCardItem = {
   title: string;

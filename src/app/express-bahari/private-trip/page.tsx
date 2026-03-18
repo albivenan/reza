@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { imgRectangle4237 } from "../../../imports/svg-0s4k8";
+import { imgRectangle4237 } from "@/components/icons/svg-0s4k8";
 
 /* ================= ASSETS ================= */
 const imgTicket = "/assets/5aeb5814785d05b69a5b08368d9a861a3285e7a0.png";

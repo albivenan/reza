@@ -1,12 +1,12 @@
 'use client';
-import svgPaths from "./svg-9rp6dcu08w";
+import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgDsc023411 = "/assets/4cc3f0a4e20a0fb3df5054f9e4f9cdbe92f41c87.png";
 const imgWhatsAppImage20250103At114010Pm1 = "/assets/c5e084751f71738ed60afee0155fdf0a6525d2db.png";
 const imgLosalaTravelLogoOnly = "/assets/110f0e1e80716f8a995f0c7455b7174a0b709b85.png";
 const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";
-import { imgRectangle4222, imgRectangle4202, imgEllipse18 } from "./svg-mhjo3";
+import { imgRectangle4222, imgRectangle4202, imgEllipse18 } from "@/components/icons/svg-mhjo3";
 
 export default function HomepageSection3() {
   return (
