@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { LazyImage } from "@/components/ui/LazyImage";
 
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgWhatsAppImage20250103At114010Pm1 = "/assets/c5e084751f71738ed60afee0155fdf0a6525d2db.png";
@@ -52,7 +53,7 @@ export default function AboutSection() {
 
           {/* Pattern overlay */}
           <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
-            <img alt="" src={imgPattern2011} className="w-full h-[138%] object-cover -mt-[20%]" />
+            <LazyImage alt="" src={imgPattern2011} className="w-full h-[138%] object-cover -mt-[20%]" loading="lazy" />
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10 p-8 md:p-14 min-h-[450px]">
@@ -72,10 +73,11 @@ export default function AboutSection() {
               className="flex-shrink-0 w-full max-w-[380px] aspect-[380/421] rounded-[15px] overflow-hidden opacity-0"
               style={{ maskImage: `url('${imgRectangle4202}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
             >
-              <img
+              <LazyImage
                 alt="Tentang Kami"
                 src={imgWhatsAppImage20250103At114010Pm1}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>

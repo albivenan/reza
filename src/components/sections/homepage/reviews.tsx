@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
+import { LazyImage } from "@/components/ui/LazyImage";
 
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgDsc023411 = "/assets/4cc3f0a4e20a0fb3df5054f9e4f9cdbe92f41c87.png";
@@ -80,7 +81,7 @@ export default function ReviewsSection() {
         {/* Background */}
         <div className="absolute inset-0 bg-[#0d2464]" />
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img alt="" src={imgPattern2011} className="w-full h-[136%] object-cover -mt-[19%]" />
+          <LazyImage alt="" src={imgPattern2011} className="w-full h-[136%] object-cover -mt-[19%]" loading="lazy" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1287px]">
@@ -101,7 +102,7 @@ export default function ReviewsSection() {
                   className="mx-auto w-[80px] h-[80px] md:w-[102px] md:h-[102px] rounded-full overflow-hidden"
                   style={{ maskImage: `url('${imgEllipse18}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
                 >
-                  <img alt="Reviewer" src={imgDsc023411} className="w-full h-full object-cover" />
+                  <LazyImage alt="Reviewer" src={imgDsc023411} className="w-full h-full object-cover" loading="lazy" />
                 </div>
 
                 {/* Blue inner card */}

@@ -2,6 +2,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
+import { LazyImage } from "@/components/ui/LazyImage";
+
 const imgUnsplashXsTqMVvStMa1 = "/assets/f083bd1931b07dc8db4f16b67b65dc73e3669262.png";
 const imgWhatsAppImage20250104At114622Am1 = "/assets/e1c2ac1049b0ae1686c4b8446ef299b778439d6d.png";
 import { imgUnsplashXsTqMVvStMa, imgRectangle4311 } from "@/components/icons/svg-mhjo3";
@@ -32,10 +34,12 @@ export default function HeroSection() {
           className="absolute inset-0 z-0"
           style={{ maskImage: `url('${imgUnsplashXsTqMVvStMa}')`, maskSize: 'cover', maskRepeat: 'no-repeat' }}
         >
-          <img
+          <LazyImage
             alt="Karimunjawa"
             src={imgUnsplashXsTqMVvStMa1}
             className="absolute inset-0 w-full h-full object-cover opacity-95"
+            loading="eager"
+            skeletonClassName="bg-blue-900/50"
           />
         </div>
 
@@ -88,10 +92,11 @@ function ReviewCard() {
           className="w-full h-full"
           style={{ maskImage: `url('${imgRectangle4311}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
         >
-          <img
+          <LazyImage
             alt="Traveler"
             src={imgWhatsAppImage20250104At114622Am1}
             className="w-full h-full object-cover object-center p-4 rounded-[39px]"
+            loading="lazy"
           />
         </div>
       </div>

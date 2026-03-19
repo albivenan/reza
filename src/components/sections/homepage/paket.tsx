@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
+import { LazyImage } from "@/components/ui/LazyImage";
+
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgKarimunjawaMap011 = "/assets/093c4d21393f0f2504052e344e7206d936c220d7.png";
@@ -137,6 +139,10 @@ function PackageArrow({ path }: { path: string }) {
                     type="matrix"
                     values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
                   />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                  />
                   <feBlend
                     in2="BackgroundImageFix"
                     mode="normal"
@@ -189,10 +195,11 @@ function PackageImage({
         maskPosition: "center",
       }}
     >
-      <img
+      <LazyImage
         alt=""
         src={image}
         className={`absolute inset-0 size-full pointer-events-none ${className}`}
+        loading="lazy"
       />
 
       {overlay && (
@@ -200,10 +207,11 @@ function PackageImage({
       )}
 
       {overlay && overlayTitleImage && (
-        <img
+        <LazyImage
           alt=""
           src={overlayTitleImage}
           className="pointer-events-none absolute left-0 top-0 h-full max-w-none object-cover"
+          loading="lazy"
         />
       )}
     </div>

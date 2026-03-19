@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
+import { LazyImage } from "@/components/ui/LazyImage";
 
 const imgPattern2015 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgDji07731 = "/assets/7f2ad25c18286501d1c570f7f827f096064429f8.png";
@@ -90,7 +91,7 @@ export default function OffersSection() {
         </div>
         <div ref={descRef} className="flex flex-col items-start md:items-end text-left md:text-right max-w-[420px]">
           <p className="font-['Poppins:Medium',sans-serif] text-[16px] md:text-[18px] text-black leading-[1.5] mb-6 md:mb-8">
-            Setiap paket perjalanan kami dilengkapi dengan panduan lengkap dan tips perjalanan dari para ahli.
+            Setiap paket perjalanan kami dilengkapi dengan panduan lengkap und tips perjalanan dari para ahli.
           </p>
           <a href="/penawaran" className="bg-[#ffc229] h-[60px] md:h-[80px] w-full md:w-[350px] rounded-[40px] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center cursor-pointer hover:bg-[#ffb400] transition-all transform hover:-translate-y-1">
             <span className="font-['Poppins:Bold',sans-serif] text-[#0d2464] text-[18px] md:text-[24px]">Penawaran kami</span>
@@ -108,9 +109,10 @@ export default function OffersSection() {
             onClick={() => setSelectedImage(img.src)}
           >
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
-            <img
+            <LazyImage
               alt={img.alt}
               src={img.src}
+              loading="lazy"
               className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${img.flip ? 'scale-y-[-1] rotate-180' : ''}`}
             />
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
@@ -163,7 +165,7 @@ export default function OffersSection() {
           </button>
           
           <div className="relative max-w-[95vw] max-h-[90vh] overflow-hidden rounded-[20px] shadow-2xl animate-in zoom-in-95 duration-300">
-            <img 
+            <LazyImage 
               src={selectedImage} 
               alt="Penawaran Destinasi" 
               className="max-w-full max-h-[90vh] object-contain"

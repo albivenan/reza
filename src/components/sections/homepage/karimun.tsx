@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { LazyImage } from "@/components/ui/LazyImage";
 
 // Data konten
 const steps = [
@@ -26,7 +27,7 @@ const imgKarimunjawaMap011 = "/assets/093c4d21393f0f2504052e344e7206d936c220d7.p
 
 const PulauKarimunjawa: React.FC = () => {
   const sectionRef = useRef(null);
-  const mapRef = useRef(null);
+  const mapRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef(null);
   const stepsRef = useRef<HTMLDivElement>(null);
 
@@ -34,15 +35,17 @@ const PulauKarimunjawa: React.FC = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Map Animation
-    gsap.fromTo(mapRef.current,
-      { opacity: 0, scale: 1.1, x: 50 },
-      { 
-        opacity: 0.5, scale: 1.8, x: 0, 
-        duration: 2, 
-        ease: "power2.out",
-        scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true }
-      }
-    );
+    if (mapRef.current) {
+      gsap.fromTo(mapRef.current,
+        { opacity: 0, scale: 1.1, x: 50 },
+        { 
+          opacity: 0.5, scale: 1.8, x: 0, 
+          duration: 2, 
+          ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true }
+        }
+      );
+    }
 
     // Title Animation
     gsap.fromTo(titleRef.current,
@@ -77,12 +80,16 @@ const PulauKarimunjawa: React.FC = () => {
   return (
     <section ref={sectionRef} className="relative w-full min-h-screen py-16 md:py-24 bg-white overflow-hidden">
       {/* BACKGROUND IMAGE - Map Silhouette */}
-      <div className="absolute top-[-100px] md:top-[-250px] bottom-[-100px] md:bottom-[-250px] right-[-100px] md:right-[-150px] w-full md:w-[70%] z-0 pointer-events-none overflow-visible">
-        <img
-          ref={mapRef}
+      <div 
+        ref={mapRef}
+        className="absolute top-[-100px] md:top-[-250px] bottom-[-100px] md:bottom-[-250px] right-[-100px] md:right-[-150px] w-full md:w-[70%] z-0 pointer-events-none overflow-visible opacity-0"
+      >
+        <LazyImage
           src={imgKarimunjawaMap011}
           alt=""
-          className="w-full h-full object-contain object-right opacity-0"
+          className="w-full h-full object-contain object-right"
+          loading="lazy"
+          skeletonClassName="bg-yellow-50"
         />
       </div>
 

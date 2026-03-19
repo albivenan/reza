@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
+import { LazyImage } from "@/components/ui/LazyImage";
+
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgKarimunjawaMap011 = "/assets/093c4d21393f0f2504052e344e7206d936c220d7.png";
@@ -140,10 +142,11 @@ function TransportCard({
           maskPosition: "center",
         }}
       >
-        <img
+        <LazyImage
           alt={title}
           src={image}
           className={`pointer-events-none absolute inset-0 size-full ${imageClassName}`}
+          loading="lazy"
         />
       </div>
 

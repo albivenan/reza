@@ -1,0 +1,19 @@
+'use client';
+import React from 'react';
+
+interface SkeletonProps {
+  className?: string;
+}
+
+export const Skeleton: React.FC<SkeletonProps> = ({ className = "" }) => {
+  return (
+    <div 
+      className={`animate-pulse bg-gray-200 rounded-md ${className}`}
+      style={{
+        backgroundImage: 'linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%)',
+        backgroundSize: '200% 100%',
+        animation: 'shimmer 1.5s infinite linear'
+      }}
+    />
+  );
+};
