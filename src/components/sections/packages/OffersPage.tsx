@@ -1,9 +1,10 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import svgPaths from "@/components/icons/svg-xw860op9ef";
 
 /* ================= ASSETS ================= */
-const imgPattern2016 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
+const imgPattern2016 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgLosalaTravelLogoOnly = "/assets/110f0e1e80716f8a995f0c7455b7174a0b709b85.png";
 const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png";
 
@@ -34,8 +35,8 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-16 md:h-16" fill="none" preserveAspectRatio="none" viewBox="0 0 83.9975 83.9937">
         <g>
-          <path d={svgPaths.p2ea29100} fill="#FFC229" />
-          <path d={svgPaths.p382c7400} fill="#FFC229" />
+          <path d={svgPaths.p2ea29100} fill="currentColor" />
+          <path d={svgPaths.p382c7400} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -45,8 +46,8 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-14 md:h-12" fill="none" preserveAspectRatio="none" viewBox="0 0 71.7648 61">
         <g>
-          <path d={svgPaths.p2cc70280} fill="#FFC229" />
-          <path d={svgPaths.p33d85800} fill="#FFC229" />
+          <path d={svgPaths.p2cc70280} fill="currentColor" />
+          <path d={svgPaths.p33d85800} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -56,8 +57,8 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-12 md:h-14" fill="none" preserveAspectRatio="none" viewBox="0 0 64 72">
         <g>
-          <path d={svgPaths.p2652b910} fill="#FFC229" />
-          <path d={svgPaths.p13d74580} fill="#FFC229" />
+          <path d={svgPaths.p2652b910} fill="currentColor" />
+          <path d={svgPaths.p13d74580} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -67,8 +68,8 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-14 md:h-14" fill="none" preserveAspectRatio="none" viewBox="0 0 64.6667 64.6667">
         <g>
-          <path d={svgPaths.p8971000} fill="#FFC229" />
-          <path d={svgPaths.p3328cd80} fill="#FFC229" />
+          <path d={svgPaths.p8971000} fill="currentColor" />
+          <path d={svgPaths.p3328cd80} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -78,10 +79,10 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-16 md:h-14" fill="none" preserveAspectRatio="none" viewBox="0 0 74.1228 70.4511">
         <g>
-          <path d={svgPaths.p8d3c100} fill="#FFC229" />
-          <path d={svgPaths.p39415800} fill="#FFC229" />
-          <path d={svgPaths.p2a5d7cc0} fill="#FFC229" />
-          <path d={svgPaths.p16798ef2} fill="#FFC229" />
+          <path d={svgPaths.p8d3c100} fill="currentColor" />
+          <path d={svgPaths.p39415800} fill="currentColor" />
+          <path d={svgPaths.p2a5d7cc0} fill="currentColor" />
+          <path d={svgPaths.p16798ef2} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -91,7 +92,7 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-12 md:h-16" fill="none" preserveAspectRatio="none" viewBox="0 0 66.326 82.0714">
         <g>
-          <path d={svgPaths.p23176200} fill="#FFC229" />
+          <path d={svgPaths.p23176200} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -101,9 +102,9 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-16 md:h-14" fill="none" preserveAspectRatio="none" viewBox="0 0 79.9999 67.0967">
         <g>
-          <path d={svgPaths.p118065c0} fill="#FFC229" />
-          <path d={svgPaths.p1b25dd00} fill="#FFC229" />
-          <path d={svgPaths.p3868f8f0} fill="#FFC229" />
+          <path d={svgPaths.p118065c0} fill="currentColor" />
+          <path d={svgPaths.p1b25dd00} fill="currentColor" />
+          <path d={svgPaths.p3868f8f0} fill="currentColor" />
         </g>
       </svg>
     ),
@@ -113,15 +114,15 @@ const offers: OfferItem[] = [
     icon: (
       <svg className="w-10 h-10 md:w-16 md:h-10" fill="none" preserveAspectRatio="none" viewBox="0 0 79 50.1725">
         <g>
-          <path d={svgPaths.p21c9cd00} stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d="M57.8449 43.431H77.5V48.6724" stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d={svgPaths.p13ae6e80} stroke="#FFC229" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
-          <path d={svgPaths.p2f60080} stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d="M1.5 32.9483H39.5" stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d="M52.6034 32.9483H59.1552" stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d={svgPaths.p28fb6b00} stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d={svgPaths.p34b13100} stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-          <path d={svgPaths.p13295780} stroke="#FFC229" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d={svgPaths.p21c9cd00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d="M57.8449 43.431H77.5V48.6724" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d={svgPaths.p13ae6e80} stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+          <path d={svgPaths.p2f60080} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d="M1.5 32.9483H39.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d="M52.6034 32.9483H59.1552" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d={svgPaths.p28fb6b00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d={svgPaths.p34b13100} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+          <path d={svgPaths.p13295780} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
         </g>
       </svg>
     ),
@@ -132,7 +133,7 @@ const galleries: GalleryItem[] = [
   {
     image: imgGalleryTall,
     alt: "Pemandangan laut",
-    className: "md:row-span-2 md:h-full",
+    className: "md:row-span-3 h-full",
   },
   {
     image: imgGalleryTop,
@@ -145,7 +146,7 @@ const galleries: GalleryItem[] = [
   {
     image: imgGalleryWide,
     alt: "Dokumentasi wisata",
-    className: "md:col-span-2",
+    className: "col-span-2 row-span-2",
   },
 ];
 
@@ -160,8 +161,40 @@ const SectionPattern: React.FC<{ className?: string }> = ({ className = "" }) =>
   </div>
 );
 
+const InteractiveImage: React.FC<{
+  src: string;
+  alt: string;
+  className?: string;
+  onClick: (s: string) => void;
+  aspectClassName?: string;
+}> = ({ src, alt, className = "", onClick, aspectClassName = "" }) => {
+  return (
+    <div 
+      className={`group relative overflow-hidden rounded-[14px] shadow-[0_4px_12px_rgba(0,0,0,0.16)] cursor-pointer ${className} ${aspectClassName}`}
+      onClick={() => onClick(src)}
+    >
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
+        <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/40">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-const HeroSection: React.FC = () => {
+
+const HeroSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageClick }) => {
   return (
     <section className="relative">
       <SectionPattern className="bottom-[-40px] h-[170px]" />
@@ -181,13 +214,12 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="mt-10 md:mt-12">
-          <div className="overflow-hidden rounded-[14px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-            <img
-              src={imgHero}
-              alt="Penawaran Losala Travel"
-              className="w-full h-[210px] md:h-[350px] lg:h-[430px] object-cover"
-            />
-          </div>
+          <InteractiveImage 
+             src={imgHero} 
+             alt="Penawaran Losala Travel" 
+             className="w-full h-[210px] md:h-[350px] lg:h-[430px]" 
+             onClick={onImageClick}
+          />
         </div>
       </div>
     </section>
@@ -196,19 +228,19 @@ const HeroSection: React.FC = () => {
 
 const OfferCard: React.FC<OfferItem> = ({ title, icon }) => {
   return (
-    <div className="flex flex-col items-center text-center">
-      <div className="relative flex h-[140px] w-[90px] md:h-[272px] md:w-[171px] items-center justify-center rounded-[999px] bg-[#0D2464] shadow-[0_7px_7px_rgba(0,0,0,0.25)] overflow-hidden">
+    <div className="group flex flex-col items-center text-center cursor-pointer transition-transform hover:-translate-y-2">
+      <div className="relative flex h-[140px] w-[90px] md:h-[272px] md:w-[171px] items-center justify-center rounded-[999px] bg-[#0D2464] group-hover:bg-[#FFC229] transition-colors duration-300 shadow-[0_7px_7px_rgba(0,0,0,0.25)] overflow-hidden">
         <img
           src={imgPattern2016}
           alt=""
-          className="absolute inset-0 h-[413px] w-[584px] min-w-[584px] max-w-none object-none opacity-10"
+          className="absolute inset-0 h-[413px] w-[584px] min-w-[584px] max-w-none object-none opacity-10 group-hover:opacity-20 transition-opacity"
         />
-        <div className="relative z-10 flex items-center justify-center text-[#FFC229]">
+        <div className="relative z-10 flex items-center justify-center text-[#FFC229] group-hover:text-[#0D2464] transition-colors duration-300">
           {icon}
         </div>
       </div>
 
-      <p className="mt-4 whitespace-pre-line text-[#0D2464] text-[14px] md:text-[18px] font-semibold leading-[25px]">
+      <p className="mt-4 whitespace-pre-line text-[#0D2464] group-hover:text-[#FFC229] text-[14px] md:text-[18px] font-bold leading-[1.2] md:leading-[25px] transition-colors duration-300">
         {title}
       </p>
     </div>
@@ -217,25 +249,19 @@ const OfferCard: React.FC<OfferItem> = ({ title, icon }) => {
 
 const OffersSection: React.FC = () => {
   return (
-    <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-4 md:pt-6">
-      <div className="text-center">
-        <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[28px] md:text-[56px] leading-none">
+    <section className="mx-auto max-w-[1440px] px-6 md:px-12 pt-8 md:pt-12">
+      <div className="text-center mb-10 md:mb-16">
+        <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[32px] md:text-[56px] leading-[1.1]">
           Penawaran kami
         </h2>
-        <p className="mt-3 text-[#4D5D88] text-[12px] md:text-[18px] leading-tight font-semibold max-w-[720px] mx-auto">
+        <p className="mt-4 text-[#4D5D88] text-[14px] md:text-[18px] leading-relaxed font-semibold max-w-[720px] mx-auto">
           Setiap paket perjalanan kami dilengkapi dengan panduan lengkap dan
-          tips perjalanan dari para ahli.
+          tips perjalanan dari para ahli untuk kenyamanan maksimal Anda.
         </p>
       </div>
 
-      <div className="mt-10 md:mt-14 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-10 md:gap-y-14 gap-x-6 place-items-center">
-        {offers.slice(0, 5).map((item, index) => (
-          <OfferCard key={index} {...item} />
-        ))}
-      </div>
-
-      <div className="mt-10 md:mt-14 grid grid-cols-2 sm:grid-cols-3 gap-x-6 place-items-center max-w-[720px] mx-auto">
-        {offers.slice(5).map((item, index) => (
+      <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10 place-items-center">
+        {offers.map((item, index) => (
           <OfferCard key={index} {...item} />
         ))}
       </div>
@@ -243,10 +269,10 @@ const OffersSection: React.FC = () => {
   );
 };
 
-const GallerySection: React.FC = () => {
+const GallerySection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageClick }) => {
   return (
     <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-14 md:pt-20">
-      <div className="text-center">
+      <div className="text-center mb-10">
         <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[28px] md:text-[52px] leading-none">
           Dokumentasi & Destinasi terbaik
         </h2>
@@ -255,42 +281,11 @@ const GallerySection: React.FC = () => {
         </p>
       </div>
 
-      <div className="mt-10 md:mt-12 grid grid-cols-3 grid-rows-3 gap-2 md:gap-6 h-[400px] md:h-[650px] w-full">
-        {/* div1 */}
-        <div className="row-span-3 overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-          <img
-            src={galleries[0].image}
-            alt={galleries[0].alt}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* div2 */}
-        <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-          <img
-            src={galleries[1].image}
-            alt={galleries[1].alt}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* div3 */}
-        <div className="overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-          <img
-            src={galleries[2].image}
-            alt={galleries[2].alt}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* div4 */}
-        <div className="col-span-2 row-span-2 col-start-2 overflow-hidden rounded-[10px] shadow-[0_4px_10px_rgba(0,0,0,0.18)]">
-          <img
-            src={galleries[3].image}
-            alt={galleries[3].alt}
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-3 grid-rows-3 gap-2 md:gap-6 h-[400px] md:h-[650px] w-full">
+        <InteractiveImage src={galleries[0].image} alt={galleries[0].alt} className="row-span-3" onClick={onImageClick} />
+        <InteractiveImage src={galleries[1].image} alt={galleries[1].alt} onClick={onImageClick} />
+        <InteractiveImage src={galleries[2].image} alt={galleries[2].alt} onClick={onImageClick} />
+        <InteractiveImage src={galleries[3].image} alt={galleries[3].alt} className="col-span-2 row-span-2" onClick={onImageClick} />
       </div>
 
       <div className="mt-8 md:mt-10 flex justify-center">
@@ -326,17 +321,18 @@ const InfoGlassCard: React.FC<{
   );
 };
 
-const CtaSection: React.FC = () => {
+const CtaSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageClick }) => {
   return (
     <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-16 md:pt-24 pb-12 md:pb-20">
-      <div className="relative overflow-hidden rounded-[22px] shadow-[0_6px_14px_rgba(0,0,0,0.18)]">
+      <div className="relative group overflow-hidden rounded-[22px] shadow-[0_6px_14px_rgba(0,0,0,0.18)] cursor-pointer" onClick={() => onImageClick(imgCtaBeach)}>
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
         <img
           src={imgCtaBeach}
           alt="Karimunjawa"
-          className="w-full h-[340px] md:h-[620px] object-cover"
+          className="w-full h-[340px] md:h-[620px] object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
-        <div className="absolute inset-0 flex flex-col justify-end md:justify-center px-5 md:px-8 py-5 md:py-8">
+        <div className="absolute inset-0 flex flex-col justify-end md:justify-center px-5 md:px-8 py-5 md:py-8 z-20">
           <div className="flex flex-col gap-4 md:gap-6 max-w-[360px] md:ml-6">
             <InfoGlassCard
               title="Guide Profesional"
@@ -348,6 +344,18 @@ const CtaSection: React.FC = () => {
                 text="Losala travel membawa anda ke destinasi terbaik di karimunjawa, rasakan petualangan seru dan keindahan bawah laut yang mempesona"
               />
             </div>
+          </div>
+        </div>
+        
+        {/* Zoom icon for CTA */}
+        <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity z-30">
+          <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/40">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
           </div>
         </div>
       </div>
@@ -370,14 +378,52 @@ const CtaSection: React.FC = () => {
 
 /* ================= PAGE ================= */
 export default function OffersPage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Prevent scroll when modal is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [selectedImage]);
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#F4F4F4]">
       <main>
-        <HeroSection />
+        <HeroSection onImageClick={(s) => setSelectedImage(s)} />
         <OffersSection />
-        <GallerySection />
-        <CtaSection />
+        <GallerySection onImageClick={(s) => setSelectedImage(s)} />
+        <CtaSection onImageClick={(s) => setSelectedImage(s)} />
       </main>
+
+      {/* LIGHTBOX MODAL */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white hover:text-[#FFC229] transition-colors p-2 z-[1010]"
+            onClick={() => setSelectedImage(null)}
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          
+          <div className="relative max-w-[95vw] max-h-[90vh] overflow-hidden rounded-[20px] shadow-2xl animate-in zoom-in-95 duration-300">
+            <img 
+              src={selectedImage} 
+              alt="Penawaran" 
+              className="max-w-full max-h-[90vh] object-contain"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

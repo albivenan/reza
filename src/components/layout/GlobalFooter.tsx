@@ -16,8 +16,8 @@ export default function GlobalFooter() {
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-12 lg:px-24">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-24">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-10">
           
           {/* Logo Section */}
           <div className="flex flex-col items-center md:items-start gap-4">

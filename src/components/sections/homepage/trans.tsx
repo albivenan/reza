@@ -124,7 +124,7 @@ function TransportCard({
   const content = (
     <>
       <div
-        className="relative h-[597.942px] w-full overflow-hidden"
+        className="relative h-[400px] md:h-[597.942px] w-full overflow-hidden"
         style={{
           WebkitMaskImage: `url('${imgVector14}')`,
           maskImage: `url('${imgVector14}')`,
@@ -143,11 +143,11 @@ function TransportCard({
         />
       </div>
 
-      <p className="font-bold absolute bottom-[22px] left-[20px] font-['Poppins:SemiBold',sans-serif] text-xl not-italic leading-[normal] text-white">
+      <p className="font-bold absolute bottom-[22px] left-[20px] font-['Poppins:SemiBold',sans-serif] text-[18px] md:text-xl not-italic leading-[normal] text-white">
         {title}
       </p>
 
-      <div className="absolute bottom-[0px] right-[10px]">
+      <div className="absolute bottom-[0px] right-[10px] scale-75 md:scale-100">
         <TransportArrow path={arrowPath} />
       </div>
     </>
@@ -170,18 +170,18 @@ function TransportCard({
 
 export default function TransportSection() {
   return (
-    <section className="px-[32px] pt-[70px] pb-[40px]">
+    <section className="px-6 md:px-[32px] pt-[40px] md:pt-[70px] pb-[40px]">
       <div className="mx-auto max-w-[1440px]">
-        <div className="mb-[42px] text-center">
-          <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[48px] leading-[56px] not-italic text-black">
+        <div className="mb-[32px] md:mb-[42px] text-left md:text-center">
+          <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[36px] md:text-[48px] leading-tight not-italic text-black">
             Transportasi
           </h2>
-          <p className="font-bold mx-auto mt-[10px] max-w-[790px] font-['Poppins:Medium',sans-serif] text-[18px] leading-[25px] not-italic text-black">
+          <p className="font-bold md:mx-auto mt-[10px] max-w-[790px] font-['Poppins:Medium',sans-serif] text-[16px] md:text-[18px] leading-[25px] not-italic text-black md:px-0">
             Temukan petualangan sejati degan Losala Travel, nikmati akomodasi nyaman di atas kapal dan jelajahi destinasi eksotis dengan gaya.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-3 md:gap-[20px]">
+        <div className="grid grid-cols-1 gap-[24px] md:grid-cols-3 md:gap-[20px]">
           {transportItems.map((item, index) => (
             <TransportCard key={index} {...item} />
           ))}
@@ -189,4 +189,4 @@ export default function TransportSection() {
       </div>
     </section>
   );
-}
+}

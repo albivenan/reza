@@ -6,11 +6,11 @@ import { imgUnsplashXsTqMVvStMa, imgRectangle4311 } from "@/components/icons/svg
 
 export default function HeroSection() {
   return (
-    <section className="w-full px-8 py-12">
-      <div className="relative mx-auto max-w-[1374px] h-[520px] md:h-[581px] rounded-[46px] overflow-hidden">
+    <section className="w-full px-4 sm:px-8 py-8 md:py-12">
+      <div className="relative mx-auto max-w-[1374px] min-h-[500px] md:h-[581px] rounded-[32px] md:rounded-[46px] overflow-hidden bg-[#0d2464]">
         {/* Background image */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
           style={{ maskImage: `url('${imgUnsplashXsTqMVvStMa}')`, maskSize: 'cover', maskRepeat: 'no-repeat' }}
         >
           <img
@@ -21,18 +21,23 @@ export default function HeroSection() {
         </div>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 rounded-[46px]" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Text moved to top-left */}
-        <div className="absolute left-[64px] top-[64px] max-w-[600px]">
-          <h1 className="font-['Poppins:ExtraBold',sans-serif] text-5xl leading-[1.1] text-white">
-            Karimunjawa menunggumu! <br/>
-            Dengan Losala Travel
-          </h1>
+        {/* Content Container */}
+        <div className="relative z-20 h-full w-full flex flex-col md:block p-8 md:p-16">
+          {/* Text */}
+          <div className="max-w-[600px] mb-8 md:mb-0">
+            <h1 className="font-['Poppins:ExtraBold',sans-serif] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white">
+              Karimunjawa menunggumu! <br className="hidden md:block"/>
+              Dengan Losala Travel
+            </h1>
+          </div>
+
+          {/* Review Card Component - Positioned relatively on mobile, absolute on desktop */}
+          <div className="md:absolute md:right-[46px] md:top-[120px]">
+            <ReviewCard />
+          </div>
         </div>
-
-        {/* Review Card Component */}
-        <ReviewCard />
       </div>
     </section>
   );
@@ -41,7 +46,7 @@ export default function HeroSection() {
 function ReviewCard() {
   return (
     <div 
-      className="absolute right-[46px] top-[120px] w-[254px] h-[311px] rounded-[39px] border-2 border-white backdrop-blur-sm shadow-[0px_4px_24px_-1px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col pt-[29px]"
+      className="w-full max-w-[254px] h-[311px] rounded-[39px] border-2 border-white backdrop-blur-sm shadow-[0px_4px_24px_-1px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col pt-[29px] mx-auto md:mx-0"
       style={{ backgroundImage: "linear-gradient(115.612deg, rgba(255,255,255,0.5) 11.416%, rgba(202,202,202,0.1) 85.388%)" }}
     >
       {/* Stars */}

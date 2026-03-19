@@ -173,7 +173,7 @@ function PackageImage({
   return (
     <div
       className={`relative overflow-hidden ${
-        wide ? "h-[379px] w-full" : "aspect-square w-full"
+        wide ? "h-[250px] md:h-[379px] w-full" : "aspect-square w-full"
       }`}
       style={{
         WebkitMaskImage: `url('${mask}')`,
@@ -221,8 +221,8 @@ function PackageCard({
 }: PackageCardItem) {
   return (
     <div
-      className={`relative rounded-[15px] border border-[#0d2464] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.08)] ${
-        wide ? "min-h-[540px] p-[23px]" : "min-h-[540px] p-[22px]"
+      className={`relative rounded-[15px] border border-[#0d2464] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.08)] p-5 md:p-[22px] min-h-[450px] md:min-h-[540px] ${
+        wide ? "md:p-[23px]" : ""
       }`}
     >
       <PackageImage
@@ -234,11 +234,11 @@ function PackageCard({
         wide={wide}
       />
 
-      <div className={`${wide ? "pt-[25px]" : "pt-[36px]"}`}>
+      <div className={`${wide ? "pt-[20px] md:pt-[25px]" : "pt-[24px] md:pt-[36px]"}`}>
         <PackageStars path={starPath} />
 
-        <div className="mt-[12px] pr-[90px]">
-          <p className="font-bold font-['Poppins:SemiBold',sans-serif] text-[20px] leading-[1.2] text-black">
+        <div className="mt-[12px] md:pr-[90px]">
+          <p className="font-bold font-['Poppins:SemiBold',sans-serif] text-[18px] md:text-[20px] leading-[1.2] text-black">
             {title}
             {subtitle && (
               <>
@@ -262,14 +262,14 @@ export default function TravelPackageSection() {
   const wideCard = packageItems.find((item) => item.wide);
 
   return (
-    <section className="px-[32px] py-[72px]">
+    <section className="px-6 md:px-[32px] py-12 md:py-[72px]">
       <div className="mx-auto max-w-[1287px]">
-        <div className="mb-[52px] text-center">
-          <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[48px] text-black">
+        <div className="mb-10 md:mb-[52px] text-left md:text-center">
+          <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[36px] md:text-[48px] text-black leading-tight">
             Informasi Paket Perjalanan
           </h2>
-          <p className="mt-[10px] font-['Poppins:Medium',sans-serif] text-[20px] text-black">
-            Buatlah pengalaman baru
+          <p className="mt-[10px] items-center md:mx-auto font-['Poppins:Medium',sans-serif] text-[18px] md:text-[20px] text-black max-w-[600px]">
+            Buatlah pengalaman baru yang tak terlupakan bersama kami
           </p>
         </div>
 
@@ -280,11 +280,11 @@ export default function TravelPackageSection() {
         </div>
 
         {wideCard && (
-          <div className="mt-[32px]">
+          <div className="mt-[24px] md:mt-[32px]">
             <PackageCard {...wideCard} />
           </div>
         )}
       </div>
     </section>
   );
-}
+}

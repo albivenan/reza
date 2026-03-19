@@ -19,20 +19,20 @@ export default function AboutSection() {
             <img alt="" src={imgPattern2011} className="w-full h-[138%] object-cover -mt-[20%]" />
           </div>
 
-          <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 p-10 md:p-14 min-h-[503px]">
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10 p-8 md:p-14 min-h-[450px]">
             {/* Text */}
-            <div className="flex-1">
-              <h2 className="font-bold font-['Poppins:ExtraBold',sans-serif] text-[48px] leading-tight text-white mb-6">
+            <div className="flex-1 text-left">
+              <h2 className="font-bold font-['Poppins:ExtraBold',sans-serif] text-[36px] md:text-[48px] leading-tight text-white mb-6">
                 Tentang<br />Kami
               </h2>
-              <p className="font-bold font-['Poppins:SemiBold',sans-serif] text-[20px] md:text-[24px] leading-[30px] text-white max-w-[503px]">
+              <p className="font-bold font-['Poppins:SemiBold',sans-serif] text-[18px] md:text-[22px] lg:text-[24px] leading-relaxed text-white max-w-[503px]">
                 Losala Travel adalah sebuah agen perjalanan yang berfokus pada penyediaan paket wisata ke Karimunjawa, penawaran berbagai layanan wisata, seperti transportasi, akomodasi, dan rencana perjalanan yang terencana dengan baik untuk para wisatawan.
               </p>
             </div>
 
             {/* Photo */}
             <div
-              className="flex-shrink-0 w-[380px] h-[421px] rounded-[15px] overflow-hidden"
+              className="flex-shrink-0 w-full max-w-[380px] aspect-[380/421] rounded-[15px] overflow-hidden"
               style={{ maskImage: `url('${imgRectangle4202}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
             >
               <img

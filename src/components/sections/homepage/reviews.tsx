@@ -24,16 +24,16 @@ function StarRating() {
 
 export default function ReviewsSection() {
   return (
-    <div className="relative overflow-visible font-bold">
-      {/* Star decoration moved here to allow overflow visibility */}
-      <div className="absolute -right-8 -top-14 z-20 opacity-90">
+    <div className="relative overflow-hidden font-bold">
+      {/* Star decoration - hidden on mobile to prevent overflow */}
+      <div className="absolute -right-8 -top-14 z-20 opacity-90 hidden md:block">
         <svg width="140" height="140" viewBox="0 0 208 208" fill="none">
           <path d={svgPaths.p27caad80} stroke="#FFC229" strokeWidth="4" />
         </svg>
       </div>
 
       <section
-        className="relative w-full py-14 px-8"
+        className="relative w-full py-10 md:py-14 px-6 md:px-8"
         style={{ maskImage: `url('${imgRectangle4222}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
       >
         {/* Background */}
@@ -45,8 +45,8 @@ export default function ReviewsSection() {
         <div className="relative z-10 mx-auto max-w-[1287px]">
           {/* Header */}
           <div className="mb-10 text-center md:text-left">
-            <h2 className="font-bold font-['Poppins:Bold',sans-serif] text-[36px] text-white">Traveler Reviews</h2>
-            <p className="mt-2 font-['Roboto:Regular',sans-serif] text-[20px] text-white max-w-[654px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+            <h2 className="font-bold font-['Poppins:Bold',sans-serif] text-[30px] md:text-[36px] text-white">Traveler Reviews</h2>
+            <p className="mt-2 font-['Roboto:Regular',sans-serif] text-[16px] md:text-[20px] text-white max-w-[654px]" style={{ fontVariationSettings: "'wdth' 100" }}>
               Lihat apa yang pelanggan kami katakan tentang pengalaman mereka
             </p>
           </div>
@@ -54,20 +54,20 @@ export default function ReviewsSection() {
           {/* Review cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reviews.map((r, i) => (
-              <div key={i} className="bg-[#ffc229] rounded-[50px] p-6 flex flex-col gap-4">
+              <div key={i} className="bg-[#ffc229] rounded-[30px] md:rounded-[50px] p-5 md:p-6 flex flex-col gap-4">
                 {/* Avatar */}
                 <div
-                  className="mx-auto w-[102px] h-[102px] rounded-full overflow-hidden"
+                  className="mx-auto w-[80px] h-[80px] md:w-[102px] md:h-[102px] rounded-full overflow-hidden"
                   style={{ maskImage: `url('${imgEllipse18}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
                 >
                   <img alt="Reviewer" src={imgDsc023411} className="w-full h-full object-cover" />
                 </div>
 
                 {/* Blue inner card */}
-                <div className="bg-[#0d2464] rounded-[40px] px-6 py-5 flex-1 flex flex-col items-center gap-3">
-                  <p className="font-['Poppins:Medium',sans-serif] text-[24px] text-white text-center">{r.name}</p>
+                <div className="bg-[#0d2464] rounded-[24px] md:rounded-[40px] px-5 py-5 flex-1 flex flex-col items-center gap-3">
+                  <p className="font-['Poppins:Medium',sans-serif] text-[20px] md:text-[24px] text-white text-center">{r.name}</p>
                   <StarRating />
-                  <p className="font-['Poppins:Medium',sans-serif] text-[16px] text-white text-center leading-[24px] line-clamp-3">
+                  <p className="font-['Poppins:Medium',sans-serif] text-[14px] md:text-[16px] text-white text-center leading-[1.5] line-clamp-3">
                     {r.text}
                   </p>
                 </div>
