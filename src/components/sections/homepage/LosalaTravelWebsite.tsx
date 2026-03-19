@@ -1,4 +1,8 @@
 'use client';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import HeroSection from "@/components/sections/homepage/hero";
 import OffersSection from "@/components/sections/homepage/offers";
 import StatistikSection from "@/components/sections/homepage/statistik";
@@ -9,9 +13,14 @@ import AboutSection from "@/components/sections/homepage/about";
 import ReviewsSection from "@/components/sections/homepage/reviews";
 
 export default function LosalaTravelWebsite() {
-  return (
-    <div className="bg-white min-h-screen overflow-x-hidden text-black" data-name="Losala Travel Website">
+  const containerRef = useRef(null);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="bg-white min-h-screen overflow-x-hidden text-black" data-name="Losala Travel Website">
       <main>
         <HeroSection />
         <OffersSection />
@@ -22,7 +31,6 @@ export default function LosalaTravelWebsite() {
         <AboutSection />
         <ReviewsSection />
       </main>
-
     </div>
   );
 }

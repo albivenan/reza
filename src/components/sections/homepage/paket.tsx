@@ -1,4 +1,7 @@
 'use client';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
@@ -9,7 +12,7 @@ const imgPackOpenTrip2 = "/assets/2006429202f9b8be608391001b03ca672a936f55.png";
 const imgPackByRequestArtboard81 = "/assets/f9f54806b7fac831ad7d1c0d7c24fda9fd5022ee.png";
 const imgPackGlampingGroundArtboard61 = "/assets/87560b8617827e754820ebafd260b8c60d0a4cb9.png";
 const imgPelniKalimutuFinal1 = "/assets/c702909d2bf5b51b9e0818ae4188ef76f6291368.png";
-const imgSiginjaiFinal1 = "/assets/06216d95e4d1bb8d0df55dcf3b76e11fe0ded.png";
+const imgSiginjaiFinal1 = "/assets/06216d95e4d1bb8d0df55dcf3b76e16e11fe0ded.png";
 const imgXpressBahari9FFinal1 = "/assets/6d9de98984a25ddbf56d327f94beb29a28fb5d0b.png";
 import React from "react";
 import { imgRectangle4154, imgRectangle4155, imgRectangle4156 } from "@/components/icons/svg-mhjo3";
@@ -218,10 +221,12 @@ function PackageCard({
   wide = false,
   overlay = false,
   overlayTitleImage,
-}: PackageCardItem) {
+  innerRef,
+}: PackageCardItem & { innerRef?: (el: HTMLDivElement | null) => void }) {
   return (
     <div
-      className={`relative rounded-[15px] border border-[#0d2464] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.08)] p-5 md:p-[22px] min-h-[450px] md:min-h-[540px] ${
+      ref={innerRef}
+      className={`relative rounded-[15px] border border-[#0d2464] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.08)] p-5 md:p-[22px] min-h-[450px] md:min-h-[540px] opacity-0 ${
         wide ? "md:p-[23px]" : ""
       }`}
     >
@@ -260,9 +265,54 @@ function PackageCard({
 export default function TravelPackageSection() {
   const topCards = packageItems.filter((item) => !item.wide);
   const wideCard = packageItems.find((item) => item.wide);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const wideCardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = window.innerWidth < 768;
+
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      
+      const xOffset = isMobile ? (i % 2 === 0 ? -50 : 50) : 0;
+      const yOffset = isMobile ? 0 : 50;
+
+      gsap.fromTo(card,
+        { opacity: 0, x: xOffset, y: yOffset },
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            once: true,
+          }
+        }
+      );
+    });
+
+    if (wideCardRef.current) {
+      gsap.fromTo(wideCardRef.current,
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, y: 0, 
+          duration: 1, 
+          scrollTrigger: {
+            trigger: wideCardRef.current,
+            start: "top 90%",
+            once: true,
+          }
+        }
+      );
+    }
+  }, []);
 
   return (
-    <section className="px-6 md:px-[32px] py-12 md:py-[72px]">
+    <section className="px-6 md:px-[32px] py-12 md:py-[72px] overflow-x-hidden">
       <div className="mx-auto max-w-[1287px]">
         <div className="mb-10 md:mb-[52px] text-left md:text-center">
           <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[36px] md:text-[48px] text-black leading-tight">
@@ -275,13 +325,20 @@ export default function TravelPackageSection() {
 
         <div className="grid grid-cols-1 gap-[24px] md:grid-cols-3">
           {topCards.map((item, index) => (
-            <PackageCard key={index} {...item} />
+            <PackageCard 
+              key={index} 
+              {...item} 
+              innerRef={(el) => { cardsRef.current[index] = el; }} 
+            />
           ))}
         </div>
 
         {wideCard && (
           <div className="mt-[24px] md:mt-[32px]">
-            <PackageCard {...wideCard} />
+            <PackageCard 
+              {...wideCard} 
+              innerRef={(el) => { wideCardRef.current = el; }} 
+            />
           </div>
         )}
       </div>

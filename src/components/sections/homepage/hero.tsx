@@ -1,10 +1,29 @@
 'use client';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgUnsplashXsTqMVvStMa1 = "/assets/f083bd1931b07dc8db4f16b67b65dc73e3669262.png";
 const imgWhatsAppImage20250104At114622Am1 = "/assets/e1c2ac1049b0ae1686c4b8446ef299b778439d6d.png";
 import { imgUnsplashXsTqMVvStMa, imgRectangle4311 } from "@/components/icons/svg-mhjo3";
 
 export default function HeroSection() {
+  const h1Ref = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl.fromTo(h1Ref.current, 
+      { opacity: 0, y: 50 }, 
+      { opacity: 1, y: 0, duration: 1, delay: 0.5 }
+    )
+    .fromTo(cardRef.current,
+      { opacity: 0, x: 100, scale: 0.8 },
+      { opacity: 1, x: 0, scale: 1, duration: 1 },
+      "-=0.5"
+    );
+  }, []);
+
   return (
     <section className="w-full px-4 sm:px-8 py-8 md:py-12">
       <div className="relative mx-auto max-w-[1374px] min-h-[500px] md:h-[581px] rounded-[32px] md:rounded-[46px] overflow-hidden bg-[#0d2464]">
@@ -27,14 +46,14 @@ export default function HeroSection() {
         <div className="relative z-20 h-full w-full flex flex-col md:block p-8 md:p-16">
           {/* Text */}
           <div className="max-w-[600px] mb-8 md:mb-0">
-            <h1 className="font-['Poppins:ExtraBold',sans-serif] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white">
+            <h1 ref={h1Ref} className="font-['Poppins:ExtraBold',sans-serif] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white">
               Karimunjawa menunggumu! <br className="hidden md:block"/>
               Dengan Losala Travel
             </h1>
           </div>
 
           {/* Review Card Component - Positioned relatively on mobile, absolute on desktop */}
-          <div className="md:absolute md:right-[46px] md:top-[120px]">
+          <div ref={cardRef} className="md:absolute md:right-[46px] md:top-[120px]">
             <ReviewCard />
           </div>
         </div>
@@ -60,7 +79,7 @@ function ReviewCard() {
 
       {/* Review Text */}
       <p className="px-5 font-['Poppins:Medium',sans-serif] text-[13px] leading-[1.2] text-white mb-4">
-        Pemandangan yang benar-benar menakjubkan dan pelayanan yang sempurna.
+        Pemandangan yang benar-benar menakjubkan und pelayanan yang sempurna.
       </p>
 
       {/* Traveler Photo - Contained (No overflow) */}

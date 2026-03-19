@@ -1,5 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
+'use client';
+import React, { useEffect, useRef } from 'react';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Data konten
 const steps = [
@@ -16,21 +18,71 @@ const steps = [
   {
     id: 3,
     title: "Akomodasi",
-    description: "Rasakan kenyamanan dan kemewahan di tengah keindahan tropis Karimunjawa dengan pilihan akomodasi terbaik dari Losala Travel."
+    description: "Rasakan kenyamanan und kemewahan di tengah keindahan tropis Karimunjawa dengan pilihan akomodasi terbaik dari Losala Travel."
   }
 ];
 
 const imgKarimunjawaMap011 = "/assets/093c4d21393f0f2504052e344e7206d936c220d7.png";
 
 const PulauKarimunjawa: React.FC = () => {
+  const sectionRef = useRef(null);
+  const mapRef = useRef(null);
+  const titleRef = useRef(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Map Animation
+    gsap.fromTo(mapRef.current,
+      { opacity: 0, scale: 1.1, x: 50 },
+      { 
+        opacity: 0.5, scale: 1.8, x: 0, 
+        duration: 2, 
+        ease: "power2.out",
+        scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true }
+      }
+    );
+
+    // Title Animation
+    gsap.fromTo(titleRef.current,
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, y: 0, duration: 1, 
+        scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true }
+      }
+    );
+
+    // Steps Animation (Stagger)
+    if (stepsRef.current) {
+      const stepItems = stepsRef.current.children;
+      gsap.fromTo(stepItems,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: stepsRef.current,
+            start: "top 85%",
+            once: true,
+          }
+        }
+      );
+    }
+  }, []);
+
   return (
-    <section className="relative w-full min-h-screen py-16 md:py-24 bg-white overflow-hidden">
-      {/* BACKGROUND IMAGE - Map Silhouette with overflow into neighboring sessions */}
+    <section ref={sectionRef} className="relative w-full min-h-screen py-16 md:py-24 bg-white overflow-hidden">
+      {/* BACKGROUND IMAGE - Map Silhouette */}
       <div className="absolute top-[-100px] md:top-[-250px] bottom-[-100px] md:bottom-[-250px] right-[-100px] md:right-[-150px] w-full md:w-[70%] z-0 pointer-events-none overflow-visible">
         <img
+          ref={mapRef}
           src={imgKarimunjawaMap011}
           alt=""
-          className="w-full h-full object-contain object-right transform scale-[1.2] md:scale-[1.8] opacity-30 md:opacity-50"
+          className="w-full h-full object-contain object-right opacity-0"
         />
       </div>
 
@@ -40,7 +92,7 @@ const PulauKarimunjawa: React.FC = () => {
           {/* Kolom 1: Teks */}
           <div className="flex flex-col">
             {/* JUDUL */}
-            <div className="mb-10 md:mb-16 text-left">
+            <div ref={titleRef} className="mb-10 md:mb-16 text-left opacity-0">
               <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[48px] md:text-[70px] lg:text-[110px] leading-[0.95] md:leading-[0.85] text-[#0d2464]">
                 Pulau<br />
                 <span className="text-[#ffc229]">Karimunjawa</span>
@@ -51,9 +103,9 @@ const PulauKarimunjawa: React.FC = () => {
             </div>
 
             {/* LIST ITEM */}
-            <div className="space-y-8 md:space-y-10">
+            <div ref={stepsRef} className="space-y-8 md:space-y-10">
               {steps.map((step) => (
-                <div key={step.id} className="flex flex-col gap-3 md:gap-4">
+                <div key={step.id} className="flex flex-col gap-3 md:gap-4 opacity-0">
                   <div className="flex items-center gap-4 md:gap-6 justify-start">
                     {/* NOMOR */}
                     <div className="relative flex-shrink-0 w-[44px] h-[44px] md:w-[54px] md:h-[54px]">
@@ -87,4 +139,4 @@ const PulauKarimunjawa: React.FC = () => {
   );
 };
 
-export default PulauKarimunjawa;
+export default PulauKarimunjawa;

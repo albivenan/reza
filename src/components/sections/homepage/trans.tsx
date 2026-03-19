@@ -1,4 +1,7 @@
 'use client';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 const imgPattern2015 = "/assets/db502b78bb52f9dc06097996c86e3a73dbfc871e.png";
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
@@ -120,9 +123,10 @@ function TransportCard({
   arrowPath,
   imageClassName = "",
   href,
-}: TransportItem) {
+  innerRef,
+}: TransportItem & { innerRef?: (el: HTMLDivElement | null) => void }) {
   const content = (
-    <>
+    <div ref={innerRef} className="opacity-0">
       <div
         className="relative h-[400px] md:h-[597.942px] w-full overflow-hidden"
         style={{
@@ -150,7 +154,7 @@ function TransportCard({
       <div className="absolute bottom-[0px] right-[10px] scale-75 md:scale-100">
         <TransportArrow path={arrowPath} />
       </div>
-    </>
+    </div>
   );
 
   if (href) {
@@ -169,8 +173,38 @@ function TransportCard({
 }
 
 export default function TransportSection() {
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = window.innerWidth < 768;
+
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      
+      const xOffset = isMobile ? (i % 2 === 0 ? -50 : 50) : 0;
+      const yOffset = isMobile ? 0 : 50;
+
+      gsap.fromTo(card,
+        { opacity: 0, x: xOffset, y: yOffset },
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            once: true,
+          }
+        }
+      );
+    });
+  }, []);
+
   return (
-    <section className="px-6 md:px-[32px] pt-[40px] md:pt-[70px] pb-[40px]">
+    <section className="px-6 md:px-[32px] pt-[40px] md:pt-[70px] pb-[40px] overflow-x-hidden">
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-[32px] md:mb-[42px] text-left md:text-center">
           <h2 className="font-['Poppins:ExtraBold',sans-serif] font-bold text-[36px] md:text-[48px] leading-tight not-italic text-black">
@@ -183,10 +217,14 @@ export default function TransportSection() {
 
         <div className="grid grid-cols-1 gap-[24px] md:grid-cols-3 md:gap-[20px]">
           {transportItems.map((item, index) => (
-            <TransportCard key={index} {...item} />
+            <TransportCard 
+              key={index} 
+              {...item} 
+              innerRef={(el) => { cardsRef.current[index] = el; }} 
+            />
           ))}
         </div>
       </div>
     </section>
   );
-}
+}

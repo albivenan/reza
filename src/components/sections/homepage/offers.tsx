@@ -1,5 +1,7 @@
 'use client';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-9rp6dcu08w";
 
 const imgPattern2015 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
@@ -20,9 +22,52 @@ const galleryImages = [
 
 export default function OffersSection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Prevent scroll when modal is open
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate Title
+    gsap.fromTo(titleRef.current,
+      { opacity: 0, x: -30 },
+      { 
+        opacity: 1, x: 0, duration: 1, 
+        scrollTrigger: { trigger: titleRef.current, start: "top 90%", once: true }
+      }
+    );
+
+    // Animate Description
+    gsap.fromTo(descRef.current,
+      { opacity: 0, x: 30 },
+      { 
+        opacity: 1, x: 0, duration: 1, 
+        scrollTrigger: { trigger: descRef.current, start: "top 90%", once: true }
+      }
+    );
+
+    // Stagger Gallery Images
+    if (galleryRef.current) {
+      const items = galleryRef.current.children;
+      gsap.fromTo(items,
+        { opacity: 0, scale: 0.8, y: 30 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: galleryRef.current,
+            start: "top 85%",
+            once: true,
+          }
+        }
+      );
+    }
+
     if (selectedImage) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -31,10 +76,10 @@ export default function OffersSection() {
   }, [selectedImage]);
 
   return (
-    <section className="w-full py-12">
+    <section className="w-full py-12 overflow-hidden">
       {/* Title */}
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 mb-10 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10">
-        <div className="flex-1 font-bold">
+        <div ref={titleRef} className="flex-1 font-bold">
           <h2 className="font-bold font-['Poppins:Bold',sans-serif] text-[36px] md:text-[64px] leading-[1.1] text-[#0d2464]">
             Impianmu dimulai
           </h2>
@@ -43,7 +88,7 @@ export default function OffersSection() {
             <span className="text-[#ffc229]">Losala Travel</span>
           </p>
         </div>
-        <div className="flex flex-col items-start md:items-end text-left md:text-right max-w-[420px]">
+        <div ref={descRef} className="flex flex-col items-start md:items-end text-left md:text-right max-w-[420px]">
           <p className="font-['Poppins:Medium',sans-serif] text-[16px] md:text-[18px] text-black leading-[1.5] mb-6 md:mb-8">
             Setiap paket perjalanan kami dilengkapi dengan panduan lengkap dan tips perjalanan dari para ahli.
           </p>
@@ -54,11 +99,11 @@ export default function OffersSection() {
       </div>
 
       {/* Gallery row - Responsive Grid */}
-      <div className="grid w-full grid-cols-2 sm:grid-cols-3 md:flex md:h-[306px]">
+      <div ref={galleryRef} className="grid w-full grid-cols-2 sm:grid-cols-3 md:flex md:h-[306px]">
         {galleryImages.map((img, i) => (
           <div
             key={i}
-            className="group relative h-[200px] md:h-full md:flex-1 cursor-pointer overflow-hidden"
+            className="group relative h-[200px] md:h-full md:flex-1 cursor-pointer overflow-hidden opacity-0"
             style={{ maskImage: `url('${img.mask}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
             onClick={() => setSelectedImage(img.src)}
           >
@@ -84,7 +129,7 @@ export default function OffersSection() {
         {/* Blue CTA card */}
         <a
           href="/penawaran"
-          className="group/cta relative h-[200px] md:h-full md:flex-[2] bg-[#0d2464] overflow-hidden cursor-pointer no-underline"
+          className="group/cta relative h-[200px] md:h-full md:flex-[2] bg-[#0d2464] overflow-hidden cursor-pointer no-underline opacity-0"
           style={{ maskImage: `url('${imgRectangle4220}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
         >
           <img alt="" src={imgPattern2015} className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none" />

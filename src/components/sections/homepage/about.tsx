@@ -1,14 +1,50 @@
 'use client';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgWhatsAppImage20250103At114010Pm1 = "/assets/c5e084751f71738ed60afee0155fdf0a6525d2db.png";
 import { imgRectangle4221, imgRectangle4202 } from "@/components/icons/svg-mhjo3";
 
 export default function AboutSection() {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const photoRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        once: true,
+      }
+    });
+
+    tl.fromTo(containerRef.current,
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
+    )
+    .fromTo(textRef.current,
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.5"
+    )
+    .fromTo(photoRef.current,
+      { opacity: 0, x: 50, scale: 0.9 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: "power2.out" },
+      "-=0.6"
+    );
+  }, []);
+
   return (
-    <section className="w-full px-8 py-12">
+    <section className="w-full px-8 py-12 overflow-hidden">
       <div className="mx-auto max-w-[1287px]">
         <div
-          className="relative rounded-[15px] overflow-hidden shadow-[0px_7px_7px_0px_rgba(0,0,0,0.25)]"
+          ref={containerRef}
+          className="relative rounded-[15px] overflow-hidden shadow-[0px_7px_7px_0px_rgba(0,0,0,0.25)] opacity-0"
           style={{ maskImage: `url('${imgRectangle4221}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
         >
           {/* Blue background */}
@@ -21,18 +57,19 @@ export default function AboutSection() {
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10 p-8 md:p-14 min-h-[450px]">
             {/* Text */}
-            <div className="flex-1 text-left">
+            <div ref={textRef} className="flex-1 text-left opacity-0">
               <h2 className="font-bold font-['Poppins:ExtraBold',sans-serif] text-[36px] md:text-[48px] leading-tight text-white mb-6">
                 Tentang<br />Kami
               </h2>
               <p className="font-bold font-['Poppins:SemiBold',sans-serif] text-[18px] md:text-[22px] lg:text-[24px] leading-relaxed text-white max-w-[503px]">
-                Losala Travel adalah sebuah agen perjalanan yang berfokus pada penyediaan paket wisata ke Karimunjawa, penawaran berbagai layanan wisata, seperti transportasi, akomodasi, dan rencana perjalanan yang terencana dengan baik untuk para wisatawan.
+                Losala Travel adalah sebuah agen perjalanan yang berfokus pada penyediaan paket wisata ke Karimunjawa, penawaran berbagai layanan wisata, seperti transportasi, akomodasi, und rencana perjalanan yang terencana dengan baik untuk para wisatawan.
               </p>
             </div>
 
             {/* Photo */}
             <div
-              className="flex-shrink-0 w-full max-w-[380px] aspect-[380/421] rounded-[15px] overflow-hidden"
+              ref={photoRef}
+              className="flex-shrink-0 w-full max-w-[380px] aspect-[380/421] rounded-[15px] overflow-hidden opacity-0"
               style={{ maskImage: `url('${imgRectangle4202}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
             >
               <img
