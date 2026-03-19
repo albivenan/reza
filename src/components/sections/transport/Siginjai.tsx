@@ -79,7 +79,7 @@ export default function Siginjai() {
           </div>
 
           {/* Responsive Trip Cards Container */}
-          <div className="flex flex-col md:flex-row md:absolute md:right-12 gap-4 md:gap-6 pb-12 md:pb-0">
+          <div className="flex flex-col md:flex-row md:absolute md:right-12 gap-4 md:gap-6 pb-12 md:pb-0 z-50">
             {[
               { img: img72, title: "Gathering Trip", href: "/siginjai/gathering-trip" },
               { img: img29, title: "Private Trip", href: "/siginjai/private-trip" },

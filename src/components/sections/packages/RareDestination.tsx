@@ -1,7 +1,9 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /* ================= TYPES ================= */
 type DestinationItem = {
@@ -83,7 +85,7 @@ const GalleryImage: React.FC<GalleryImageProps> = ({
 }) => {
   return (
     <div 
-      className={`relative group overflow-hidden rounded-[14px] shadow-[0_4px_12px_rgba(0,0,0,0.16)] cursor-pointer ${className}`}
+      className={`gallery-item opacity-0 relative group overflow-hidden rounded-[14px] shadow-[0_4px_12px_rgba(0,0,0,0.16)] cursor-pointer ${className}`}
       onClick={() => onClick(src)}
     >
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
@@ -111,7 +113,7 @@ const PatternOverlay: React.FC = () => {
     <img
       src={imgPattern20111}
       alt="pattern"
-      className="absolute -top-1 left-1/2 -translate-x-1/2 w-screen min-w-[100vw] max-w-none h-auto pointer-events-none -z-10"
+      className="absolute top-0 left-0 w-full h-full object-cover object-top pointer-events-none -z-10 opacity-30"
     />
   );
 };
@@ -126,16 +128,16 @@ const RatingBadge: React.FC<{
   rating = 5,
 }) => {
   return (
-    <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+    <div className="badge-item opacity-0 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
       <div className="inline-flex items-center gap-3 md:gap-4">
         <div className="flex h-[40px] w-[40px] md:h-[52px] md:w-[52px] items-center justify-center rounded-full bg-[#FFC229] shadow-[0_4px_10px_rgba(0,0,0,0.16)] flex-shrink-0">
           <span className="font-['Poppins:Bold',sans-serif] text-[18px] md:text-[24px] text-[#0D2464]">
             {badge}
           </span>
         </div>
-        <span className="font-['Poppins:SemiBold',sans-serif] text-[16px] md:text-[22px] text-[#0D2464] leading-tight">
+        <p className="font-['Poppins:Bold',sans-serif] font-bold text-[16px] md:text-[22px] text-[#0D2464] leading-tight">
           {title}
-        </span>
+        </p>
       </div>
       <div className="flex items-center gap-1 md:justify-end">
         {[...Array(rating)].map((_, i) => (
@@ -151,17 +153,17 @@ const RatingBadge: React.FC<{
 /* ================= SECTIONS ================= */
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative bg-white z-0">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10 pt-10 md:pt-16 pb-10 md:pb-20">
+    <section className="relative bg-white z-0 overflow-hidden">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-10 pt-6 md:pt-10 pb-10 md:pb-20">
         <div className="max-w-[540px]">
-          <h1 className="font-['Poppins:Bold',sans-serif] font-bold text-[34px] md:text-[64px] leading-[1.1] md:leading-[0.95]">
-            <span className="text-[#FFC229]">Dokumentasi</span>
+          <h1 className="hero-title font-['Poppins:Bold',sans-serif] font-bold text-[34px] md:text-[64px] leading-[1.1] md:leading-[0.95]">
+            <span className="text-[#FFC229] inline-block opacity-0">Dokumentasi</span>
             <br />
-            <span className="text-[#0D2464]">& Destinasi</span>
+            <span className="text-[#0D2464] inline-block opacity-0">& Destinasi</span>
             <br />
-            <span className="text-[#FFC229]">Terbaik</span>
+            <span className="text-[#FFC229] inline-block opacity-0">Terbaik</span>
           </h1>
-          <p className="mt-4 max-w-[360px] font-['Poppins:Regular',sans-serif] text-[13px] md:text-[16px] leading-relaxed text-[#0D2464]">
+          <p className="hero-desc opacity-0 font-bold mt-4 max-w-xl font-['Poppins:Regular',sans-serif] text-[13px] md:text-[16px] leading-relaxed text-[#0D2464]">
             Losala Travel membawa anda ke destinasi terbaik di Karimunjawa dengan pengalaman yang tak terlupakan.
           </p>
         </div>
@@ -235,6 +237,53 @@ const AccommodationLayout: React.FC<{ images: string[]; title: string; onImageCl
 };
 
 const DestinationSection: React.FC<{ item: { layout: string; images: string[]; title: string; badge: string; rating?: number }; onImageClick: (s: string) => void }> = ({ item, onImageClick }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate gallery items
+      gsap.fromTo(".gallery-item", 
+        { 
+          opacity: 0, 
+          y: 40,
+          scale: 0.95 
+        },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            once: true
+          }
+        }
+      );
+
+      // Animate badge
+      gsap.fromTo(".badge-item", 
+        { opacity: 0, x: -30 },
+        { 
+          opacity: 1, 
+          x: 0, 
+          duration: 1,
+          delay: 0.4,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            once: true
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const renderLayout = () => {
     switch (item.layout) {
       case "point-view":
@@ -251,7 +300,7 @@ const DestinationSection: React.FC<{ item: { layout: string; images: string[]; t
   };
 
   return (
-    <section className="relative py-8 md:py-10 z-0">
+    <section ref={containerRef} className="relative py-8 md:py-10 z-0 overflow-hidden">
       <PatternOverlay />
       <div className="mx-auto max-w-[1440px] px-5 md:px-10">
         {renderLayout()}
@@ -276,8 +325,24 @@ export default function RareDestination() {
     }
   }, [selectedImage]);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Animations
+    const heroTl = gsap.timeline();
+    heroTl.fromTo(".hero-title span", 
+      { opacity: 0, y: 30, rotationX: -15 },
+      { opacity: 1, y: 0, rotationX: 0, stagger: 0.2, duration: 1, ease: "power4.out" }
+    );
+    heroTl.fromTo(".hero-desc", 
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.4"
+    );
+  }, []);
+
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white">
+    <div className="bg-white">
       <main>
         <HeroSection />
         {destinations.map((item, index) => (
@@ -313,4 +378,4 @@ export default function RareDestination() {
       )}
     </div>
   );
-}
+}

@@ -1,6 +1,8 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /* ================= ASSETS ================= */
 const imgPattern20111 = "/assets/imgPattern20111.png";
@@ -25,29 +27,29 @@ const ships: ShipItem[] = [
 ];
 
 /* ================= CARD ================= */
-const ShipCard: React.FC<ShipItem> = ({ title, image, href }) => {
+const ShipCard = React.forwardRef<HTMLDivElement, ShipItem>(({ title, image, href }, ref) => {
   return (
-    <section className="relative z-0 flex flex-col gap-4">
+    <section ref={ref} className="relative z-0 flex flex-col gap-4 opacity-0 overflow-hidden">
 
       {/* TITLE */}
-      <div className="leading-tight">
-        <h2 className="text-2xl md:text-4xl font-bold text-[#0D2464]">
+      <div className="leading-tight px-1">
+        <h2 className="font-['Poppins:Bold',sans-serif] text-[32px] md:text-[54px] font-bold text-[#0D2464]">
           {title}
         </h2>
-        <p className="text-xl md:text-3xl font-bold text-[#FFC229] mt-1">
+        <p className="font-['Poppins:Bold',sans-serif] text-[22px] md:text-[32px] font-bold text-[#FFC229] mt-1">
           Pulang–Pergi
         </p>
       </div>
 
-      {/* PATTERN - Single image per card, spanning full screen */}
+      {/* PATTERN - Single image per card, contained */}
       <img
         src={imgPattern20111}
         alt="pattern"
-        className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-screen min-w-[100vw] max-w-none h-auto pointer-events-none z-0"
+        className="absolute bottom-0 left-0 w-full h-full object-cover object-bottom pointer-events-none z-0 opacity-20"
       />
 
       {/* IMAGE CONTAINER */}
-      <a href={href} className="relative w-full h-[240px] md:h-[440px] z-10 block overflow-hidden rounded-xl shadow-md group cursor-pointer">
+      <a href={href} className="relative w-full h-[240px] md:h-[440px] z-10 block overflow-hidden rounded-xl shadow-md group cursor-pointer mx-1">
         <img
           src={image}
           alt={title}
@@ -56,19 +58,67 @@ const ShipCard: React.FC<ShipItem> = ({ title, image, href }) => {
       </a>
     </section>
   );
-};
+});
+
+ShipCard.displayName = "ShipCard";
 
 /* ================= PAGE ================= */
 const Ship: React.FC = () => {
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+
+        gsap.fromTo(card,
+          { 
+            opacity: 0, 
+            y: 50,
+            scale: 0.98
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              once: true,
+            }
+          }
+        );
+      });
+    });
+
+    // Refresh scrolltrigger after small delay to handle lazy images
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+    <div className="bg-white">
 
       {/* CONTENT */}
       <main className="flex-1">
-        <div className="container mx-auto px-4 py-16 flex flex-col gap-y-24">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 pb-20 flex flex-col gap-y-16 md:gap-y-24">
           
           {ships.map((ship, index) => (
-            <ShipCard key={index} {...ship} />
+            <ShipCard 
+              key={index} 
+              {...ship} 
+              ref={(el) => { cardsRef.current[index] = el; }}
+            />
           ))}
 
         </div>

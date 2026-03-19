@@ -1,6 +1,8 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { imgRectangle4237 } from "@/components/icons/svg-0s4k8";
 
 /* ================= ASSETS ================= */
@@ -64,15 +66,7 @@ const packages: (PackageItem & { href: string })[] = [
 ];
 
 /* ================= HELPERS ================= */
-const MaskedImageSection: React.FC<{
-  title: string;
-  href: string;
-  image: string;
-  overlay?: boolean;
-  overlayHeight?: string;
-  titleClassName?: string;
-  imageClassName?: string;
-}> = ({
+const MaskedImageSection = React.forwardRef<HTMLAnchorElement, PackageItem & { href: string }>(({
   title,
   href,
   image,
@@ -80,9 +74,9 @@ const MaskedImageSection: React.FC<{
   overlayHeight = "h-[559px]",
   titleClassName = "",
   imageClassName = "object-cover",
-}) => {
+}, ref) => {
   return (
-    <a href={href} className="relative w-full block group overflow-hidden">
+    <a ref={ref} href={href} className="package-section opacity-0 relative w-full block group overflow-hidden">
       <div className="relative w-full overflow-hidden">
         <div
           className="relative w-full h-[420px] md:h-[520px] lg:h-[559px] bg-[#d9d9d9] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-center mask-size-cover"
@@ -111,17 +105,59 @@ const MaskedImageSection: React.FC<{
       </div>
     </a>
   );
-};
+});
 
-
+MaskedImageSection.displayName = "MaskedImageSection";
 
 /* ================= PAGE ================= */
 export default function Package() {
-  return (
-    <div className="bg-white min-h-screen overflow-x-hidden">
+  const sectionsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-      <main className="relative">
-        <div className="pointer-events-none absolute right-[-120px] top-[900px] hidden lg:block">
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      sectionsRef.current.forEach((section, index) => {
+        if (!section) return;
+
+        gsap.fromTo(section,
+          { 
+            opacity: 0, 
+            y: 40,
+            scale: 0.99
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 90%",
+              once: true,
+            }
+          }
+        );
+      });
+    });
+
+    // Refresh scrolltrigger after images load/delay to fix position issues
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <div className="bg-white">
+
+      <main className="relative overflow-hidden">
+        <div className="pointer-events-none absolute right-[-50px] md:right-[-120px] top-[900px] hidden lg:block">
           <img
             src={imgTicket}
             alt=""
@@ -131,7 +167,11 @@ export default function Package() {
 
         <div className="mx-auto flex max-w-[1440px] flex-col px-0 py-0 font-['Poppins',sans-serif]">
           {packages.map((item, index) => (
-            <MaskedImageSection key={index} {...item} />
+            <MaskedImageSection 
+              key={index} 
+              {...item} 
+              ref={(el) => { sectionsRef.current[index] = el; }}
+            />
           ))}
         </div>
       </main>

@@ -1,7 +1,14 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import svgPaths from "@/components/icons/svg-xw860op9ef";
+
+// Register plugin outside component to avoid race conditions
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ================= ASSETS ================= */
 const imgPattern2016 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
@@ -170,7 +177,7 @@ const InteractiveImage: React.FC<{
 }> = ({ src, alt, className = "", onClick, aspectClassName = "" }) => {
   return (
     <div 
-      className={`group relative overflow-hidden rounded-[14px] shadow-[0_4px_12px_rgba(0,0,0,0.16)] cursor-pointer ${className} ${aspectClassName}`}
+      className={`gallery-item opacity-0 will-change-transform group relative overflow-hidden rounded-[14px] shadow-[0_4px_12px_rgba(0,0,0,0.16)] cursor-pointer ${className} ${aspectClassName}`}
       onClick={() => onClick(src)}
     >
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
@@ -195,19 +202,52 @@ const InteractiveImage: React.FC<{
 
 
 const HeroSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageClick }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+      tl.fromTo(".hero-title span", 
+        { opacity: 0, y: 40, rotationX: -15 },
+        { opacity: 1, y: 0, rotationX: 0, duration: 1.2, stagger: 0.15, ease: "expo.out" }
+      );
+      tl.fromTo(".hero-desc", 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+        "-=0.8"
+      );
+      tl.fromTo(".hero-img", 
+        { 
+          opacity: 0, 
+          scale: 0.98, 
+          y: 30 
+        },
+        { 
+          opacity: 1, 
+          scale: 1, 
+          y: 0, 
+          duration: 1.5, 
+          ease: "expo.out" 
+        },
+        "-=0.6"
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative">
+    <section ref={containerRef} className="relative overflow-hidden">
       <SectionPattern className="bottom-[-40px] h-[170px]" />
 
       <div className="relative mx-auto max-w-[1440px] px-5 md:px-12 pt-10 md:pt-16 pb-14 md:pb-20">
         <div className="max-w-[520px]">
-          <h1 className="font-['Poppins:Bold',sans-serif] font-bold leading-[0.95] text-[#0D2464] text-[34px] md:text-[62px]">
-            Penawaran Kami
+          <h1 className="hero-title font-['Poppins:Bold',sans-serif] font-bold leading-[0.95] text-[#0D2464] text-[34px] md:text-[62px]">
+            <span className="inline-block opacity-0 will-change-transform">Penawaran Kami</span>
             <br />
-            <span className="text-[#FFC229]">di Losala Travel</span>
+            <span className="text-[#FFC229] inline-block opacity-0 will-change-transform">di Losala Travel</span>
           </h1>
 
-          <p className="mt-4 max-w-[330px] text-[#3B4C7A] text-[13px] md:text-[20px] leading-[1.15] font-semibold">
+          <p className="hero-desc opacity-0 will-change-transform mt-4 max-w-[330px] text-[#3B4C7A] text-[13px] md:text-[20px] leading-[1.15] font-semibold">
             Losala Travel memberikan penawaran dan pengalaman yang belum pernah
             anda rasakan sebelumnya
           </p>
@@ -217,7 +257,7 @@ const HeroSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageC
           <InteractiveImage 
              src={imgHero} 
              alt="Penawaran Losala Travel" 
-             className="w-full h-[210px] md:h-[350px] lg:h-[430px]" 
+             className="hero-img w-full h-[210px] md:h-[350px] lg:h-[430px]" 
              onClick={onImageClick}
           />
         </div>
@@ -228,7 +268,7 @@ const HeroSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageC
 
 const OfferCard: React.FC<OfferItem> = ({ title, icon }) => {
   return (
-    <div className="group flex flex-col items-center text-center cursor-pointer transition-transform hover:-translate-y-2">
+    <div className="offer-card opacity-0 will-change-transform group flex flex-col items-center text-center transition-transform hover:-translate-y-2">
       <div className="relative flex h-[140px] w-[90px] md:h-[272px] md:w-[171px] items-center justify-center rounded-[999px] bg-[#0D2464] group-hover:bg-[#FFC229] transition-colors duration-300 shadow-[0_7px_7px_rgba(0,0,0,0.25)] overflow-hidden">
         <img
           src={imgPattern2016}
@@ -248,9 +288,42 @@ const OfferCard: React.FC<OfferItem> = ({ title, icon }) => {
 };
 
 const OffersSection: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%",
+          once: true
+        }
+      });
+
+      tl.fromTo(".section-header", 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" }
+      );
+
+      tl.fromTo(".offer-card", 
+        { opacity: 0, y: 40, scale: 0.98 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1,
+          duration: 1.2, 
+          stagger: 0.08,
+          ease: "expo.out"
+        },
+        "-=0.8"
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="mx-auto max-w-[1440px] px-6 md:px-12 pt-8 md:pt-12">
-      <div className="text-center mb-10 md:mb-16">
+    <section ref={containerRef} className="mx-auto max-w-[1440px] px-6 md:px-12 pt-8 md:pt-12 overflow-hidden">
+      <div className="section-header opacity-0 will-change-transform text-center mb-10 md:mb-16">
         <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[32px] md:text-[56px] leading-[1.1]">
           Penawaran kami
         </h2>
@@ -270,9 +343,42 @@ const OffersSection: React.FC = () => {
 };
 
 const GallerySection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageClick }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%",
+          once: true
+        }
+      });
+
+      tl.fromTo(".section-header", 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" }
+      );
+
+      tl.fromTo(".gallery-item", 
+        { opacity: 0, y: 30, scale: 0.99 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1,
+          duration: 1.2, 
+          stagger: 0.1,
+          ease: "expo.out"
+        },
+        "-=0.8"
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-14 md:pt-20">
-      <div className="text-center mb-10">
+    <section ref={containerRef} className="mx-auto max-w-[1440px] px-5 md:px-12 pt-14 md:pt-20 overflow-hidden">
+      <div className="section-header opacity-0 will-change-transform text-center mb-10">
         <h2 className="font-['Poppins:Bold',sans-serif] font-bold text-[#0D2464] text-[28px] md:text-[52px] leading-none">
           Dokumentasi & Destinasi terbaik
         </h2>
@@ -302,7 +408,7 @@ const InfoGlassCard: React.FC<{
   text: string;
 }> = ({ title, text }) => {
   return (
-    <div className="w-[210px] md:w-[320px] rounded-[24px] border border-white/40 bg-white/30 backdrop-blur-[10px] shadow-[0_8px_18px_rgba(0,0,0,0.14)] p-4 md:p-6">
+    <div className="glass-card opacity-0 will-change-transform w-[210px] md:w-[320px] rounded-[24px] border border-white/40 bg-white/30 backdrop-blur-[10px] shadow-[0_8px_18px_rgba(0,0,0,0.14)] p-4 md:p-6">
       <div className="flex items-start gap-3">
         <div className="mt-1 flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full border border-[#7B8CB8] bg-white/70 text-[#0D2464] text-sm md:text-base font-bold">
           ✦
@@ -322,8 +428,40 @@ const InfoGlassCard: React.FC<{
 };
 
 const CtaSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageClick }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          once: true
+        }
+      });
+
+      tl.fromTo(".section-header", 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" }
+      );
+
+      tl.fromTo(".glass-card", 
+        { opacity: 0, x: -50 },
+        { 
+          opacity: 1, 
+          x: 0, 
+          duration: 1.5, 
+          stagger: 0.2,
+          ease: "expo.out"
+        },
+        "-=0.8"
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="mx-auto max-w-[1440px] px-5 md:px-12 pt-16 md:pt-24 pb-12 md:pb-20">
+    <section ref={containerRef} className="mx-auto max-w-[1440px] px-5 md:px-12 pt-16 md:pt-24 pb-12 md:pb-20 overflow-hidden">
       <div className="relative group overflow-hidden rounded-[22px] shadow-[0_6px_14px_rgba(0,0,0,0.18)] cursor-pointer" onClick={() => onImageClick(imgCtaBeach)}>
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
         <img
@@ -360,7 +498,7 @@ const CtaSection: React.FC<{ onImageClick: (s: string) => void }> = ({ onImageCl
         </div>
       </div>
 
-      <div className="mt-8 md:mt-10 text-center">
+      <div className="section-header opacity-0 will-change-transform mt-8 md:mt-10 text-center">
         <p className="text-[#273B73] font-semibold text-[16px] md:text-[28px] leading-snug">
           Mari memulai perjalanan seru di Karimunjawa dengan Losala Travel!
         </p>
@@ -389,8 +527,16 @@ export default function OffersPage() {
     }
   }, [selectedImage]);
 
+  useEffect(() => {
+    // Initial refresh after components mounted and layout stable
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#F4F4F4]">
+    <div className="min-h-screen bg-[#F4F4F4]">
       <main>
         <HeroSection onImageClick={(s) => setSelectedImage(s)} />
         <OffersSection />

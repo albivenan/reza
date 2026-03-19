@@ -6,11 +6,37 @@ const imgLosalaTravelLogoTypography = "/assets/0e289cbf5e4563cac2cb978c1887a61fd
 
 export default function GlobalHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
+
+  // Scroll detection logic
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Don't hide if menu is open
+      if (isMenuOpen) return;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        // Scrolling down & passed threshold
+        setIsVisible(false);
+      } else {
+        // Scrolling up or at top
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, isMenuOpen]);
 
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsVisible(true);
   }, [pathname]);
 
   // Prevent scroll when menu is open
@@ -33,7 +59,10 @@ export default function GlobalHeader() {
 
   return (
     <>
-      <header className="w-full h-[80px] md:h-[120px] lg:h-[145px] flex items-center justify-between px-6 md:px-10 lg:px-[120px] border-b border-[#0d2464] fixed top-0 left-0 z-[100] bg-white shadow-sm">
+      <header 
+        className={`w-full h-[80px] md:h-[120px] lg:h-[145px] flex items-center justify-between px-6 md:px-10 lg:px-[120px] border-b border-[#0d2464] fixed top-0 left-0 z-[100] bg-white shadow-sm transition-transform duration-500 ease-in-out
+          ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      >
         {/* Logo */}
         <a href="/" className="relative h-[55px] md:h-[75px] lg:h-[88px] w-[110px] md:w-[150px] lg:w-[184px] overflow-hidden transition-transform hover:scale-105">
           <img 

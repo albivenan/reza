@@ -1,12 +1,20 @@
 'use client';
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const imgPattern2011 = "/assets/0342cb03285a24cf0a85cbd67a56e12bee53ce6a.png";
 const imgWhatsAppImage20250103At114010Pm1 = "/assets/c5e084751f71738ed60afee0155fdf0a6525d2db.png";
 import { imgRectangle4221, imgRectangle4202 } from "@/components/icons/svg-mhjo3";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function TentangKamiPage() {
   const [showModal, setShowModal] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Prevent scroll when modal is open
   useEffect(() => {
@@ -17,9 +25,47 @@ export default function TentangKamiPage() {
     }
   }, [showModal]);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true
+        }
+      });
+
+      tl.fromTo(".about-title", 
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" }
+      );
+
+      tl.fromTo(".about-text", 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" },
+        "-=0.9"
+      );
+
+      tl.fromTo(".about-photo", 
+        { opacity: 0, scale: 0.95, y: 30 },
+        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "expo.out" },
+        "-=1"
+      );
+    }, containerRef);
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <section className="w-full px-6 md:px-8 py-8 md:py-12 min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-145px)] flex items-center bg-white overflow-hidden">
-      <div className="mx-auto w-full max-w-[1287px]">
+    <section className="w-full px-6 md:px-8 py-4 md:py-6 min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-145px)] flex items-center bg-white overflow-hidden">
+      <div ref={containerRef} className="mx-auto w-full max-w-[1287px]">
         <div
           className="relative rounded-[15px] overflow-hidden shadow-[0px_7px_7px_0px_rgba(0,0,0,0.25)]"
           style={{ maskImage: `url('${imgRectangle4221}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
@@ -35,17 +81,17 @@ export default function TentangKamiPage() {
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-10 p-8 md:p-14 min-h-[450px] md:min-h-[503px]">
             {/* Text */}
             <div className="flex-1 text-left">
-              <h2 className="font-bold font-['Poppins:ExtraBold',sans-serif] text-[32px] md:text-[48px] leading-tight text-white mb-6">
+              <h2 className="about-title opacity-0 will-change-transform font-bold font-['Poppins:ExtraBold',sans-serif] text-[32px] md:text-[48px] leading-tight text-white mb-6">
                 Tentang<br />Kami
               </h2>
-              <p className="font-bold font-['Poppins:SemiBold',sans-serif] text-[15px] md:text-[24px] leading-relaxed md:leading-[30px] text-white/90 md:text-white max-w-[503px]">
+              <p className="about-text opacity-0 font-bold font-['Poppins:SemiBold',sans-serif] text-[15px] md:text-[24px] leading-relaxed md:leading-[30px] text-white/90 md:text-white max-w-[503px]">
                 Losala Travel adalah sebuah agen perjalanan yang berfokus pada penyediaan paket wisata ke Karimunjawa, penawaran berbagai layanan wisata, seperti transportasi, akomodasi, dan rencana perjalanan yang terencana dengan baik untuk para wisatawan.
               </p>
             </div>
 
             {/* Photo */}
             <div
-              className="group relative flex-shrink-0 w-full max-w-[340px] md:w-[380px] aspect-[380/421] rounded-[15px] overflow-hidden cursor-pointer"
+              className="about-photo opacity-0 will-change-transform group relative flex-shrink-0 w-full max-w-[340px] md:w-[380px] aspect-[380/421] rounded-[15px] overflow-hidden cursor-pointer"
               style={{ maskImage: `url('${imgRectangle4202}')`, maskSize: '100% 100%', maskRepeat: 'no-repeat' }}
               onClick={() => setShowModal(true)}
             >
