@@ -6,6 +6,9 @@ import GlobalFooter from "@/components/layout/GlobalFooter";
 export const metadata: Metadata = {
   title: "Losala Travel",
   description: "Losala - Paket Wisata Karimunjawa Terbaik",
+  icons: {
+    icon: "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png",
+  },
 };
 
 export default function RootLayout({
