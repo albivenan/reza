@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   icons: {
     icon: "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png",
   },
+  openGraph: {
+    title: "Losala Travel",
+    description: "Losala - Paket Wisata Karimunjawa Terbaik",
+    images: [{ url: "/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Losala Travel",
+    description: "Losala - Paket Wisata Karimunjawa Terbaik",
+    images: ["/assets/0e289cbf5e4563cac2cb978c1887a61fd482dc25.png"],
+  },
 };
 
 export default function RootLayout({

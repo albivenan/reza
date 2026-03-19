@@ -16,7 +16,7 @@ import { imgRectangle4190, imgRectangle4191, imgRectangle4192, imgRectangle4193,
 const galleryImages = [
   { src: imgDji07731, mask: imgRectangle4190, alt: "Destinasi Karimunjawa 1" },
   { src: img71, mask: imgRectangle4191, alt: "Destinasi Karimunjawa 2" },
-  { src: imgWhatsAppImage20250924At72012Am2, mask: imgRectangle4193, flip: true, alt: "Destinasi Karimunjawa 3" },
+  { src: imgWhatsAppImage20250924At72012Am2, mask: imgRectangle4193, alt: "Destinasi Karimunjawa 3" },
   { src: imgWhatsAppImage20250104At114615Am1, mask: imgRectangle4192, alt: "Destinasi Karimunjawa 4" },
   { src: imgWhatsAppImage20250104At114657Am1, mask: imgRectangle4194, alt: "Destinasi Karimunjawa 5" },
 ];
@@ -113,7 +113,7 @@ export default function OffersSection() {
               alt={img.alt}
               src={img.src}
               loading="lazy"
-              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${img.flip ? 'scale-y-[-1] rotate-180' : ''}`}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
               <div className="bg-white/20 backdrop-blur-md p-2 rounded-full border border-white/40">
