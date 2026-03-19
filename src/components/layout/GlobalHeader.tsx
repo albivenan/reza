@@ -23,12 +23,12 @@ export default function GlobalHeader() {
   }, [isMenuOpen]);
 
   const navLinks = [
-    { name: 'Hubungi', href: '/hubungi' },
     { name: 'Penawaran', href: '/penawaran' },
     { name: 'Paket', href: '/paket' },
     { name: 'Transportasi', href: '/transportasi' },
-    { name: 'Tentang kami', href: '/tentang-kami' },
     { name: 'Dokumentasi', href: '/dokumentasi' },
+    { name: 'Tentang kami', href: '/tentang-kami' },
+    { name: 'Hubungi', href: '/hubungi' },
   ];
 
   return (
@@ -92,8 +92,13 @@ export default function GlobalHeader() {
         </div>
         
         {/* Aditional Mobile-only info or social */}
-        <div className={`mt-10 pt-10 border-t border-gray-100 flex flex-col items-center gap-4 transition-all duration-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-gray-400 font-['Poppins',sans-serif] text-sm">Losala Travel © 2024</p>
+        <div className={`mt-10 pt-10 border-t border-gray-100 flex flex-col items-center gap-2 transition-all duration-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
+          <p className="text-gray-400 font-['Poppins',sans-serif] text-sm text-center">
+            Losala Travel © 2024
+          </p>
+          <p className="text-[#ffc229] font-['Poppins:SemiBold',sans-serif] text-[12px] uppercase tracking-wider text-center">
+            organized by albi.digital
+          </p>
         </div>
       </div>
     </>

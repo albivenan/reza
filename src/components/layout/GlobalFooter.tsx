@@ -38,16 +38,23 @@ export default function GlobalFooter() {
           </div>
 
           {/* Links Section */}
-          <div className="flex flex-col items-center md:items-end gap-3 text-[#0d2464]">
+          <div className="flex flex-col items-start gap-3 text-[#0d2464]">
             <a href="/penawaran" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Penawaran</a>
             <a href="/paket" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Paket</a>
             <a href="/transportasi" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Transportasi</a>
             <a href="/dokumentasi" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Dokumentasi</a>
-            <a href="#" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Privacy Policy</a>
+            <a href="/tentang-kami" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Tentang kami</a>
+            <a href="/hubungi" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Hubungi</a>
+            <a href="#" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors mt-2">Privacy Policy</a>
             <a href="#" className="font-['Roboto:Regular',sans-serif] text-[18px] hover:text-[#ffc229] transition-colors">Terms of Service</a>
-            <p className="mt-4 font-['Roboto:Regular',sans-serif] text-[16px] opacity-70">
-              © 2024 Travel Explore. All rights reserved.
-            </p>
+            <div className="mt-4 flex flex-col items-start opacity-70">
+              <p className="font-['Roboto:Regular',sans-serif] text-[16px]">
+                © 2024 Travel Explore. All rights reserved.
+              </p>
+              <p className="font-['Roboto:Regular',sans-serif] text-[14px] font-medium text-[#ffc229]">
+                organized by albi.digital
+              </p>
+            </div>
           </div>
 
         </div>
